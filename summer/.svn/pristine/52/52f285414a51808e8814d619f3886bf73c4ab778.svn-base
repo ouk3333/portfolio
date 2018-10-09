@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminDAO">
+	
+	<select id="getAdminID" resultType="kr.co.frozen.model.MemberModel" parameterType="hashMap">
+		select
+			id
+		from
+			tbl_user
+		where
+			id = #{ userID }
+	</select>
+	
+	<select id="checkAdmin" resultType="kr.co.frozen.model.MemberModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_user
+		where
+			id = #{ userID }
+	</select>
+	
+</mapper>

@@ -1,0 +1,45 @@
+/**
+ * 
+ */
+
+function getContextPath() {
+	var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring(hostIndex, location.href.indexOf("/", hostIndex + 1));
+}
+
+var setPageTitle = function() {
+	var path = location.pathname.split('/')[2];
+	var pageTitle = "portfolio";
+	
+	console.log( path );
+	
+	if( path == 'admin' ) {
+		
+		if( location.pathname.split('/')[3] == 'login' ) {
+			pageTitle += " - 로그인";
+		} else {
+			pageTitle += " - 관리자페이지";
+		}
+		
+	} else if( path == '') {
+		
+		pageTitle += " - 이동욱";
+		
+	}
+	
+	document.title = pageTitle;
+}
+
+var show_alert = function( type, msg, timer ) {
+	swal({
+		title: "",
+		text: msg,
+		icon: type,
+		timer: timer,
+		button: false
+	})
+}
+
+$(document).ready(function(){
+	setPageTitle();
+});

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminProgramDAO">
+	
+	<select id="getProgramData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminProgramModel">
+		select
+			*
+		from
+			tbl_program
+		order by
+			order_no asc
+	</select>
+	
+	<insert id="addProgramData" parameterType="hashMap">
+		insert into tbl_program_storage
+		(title, language, skill, start_date, end_date, sw)
+		values
+		(#{ title }, #{ language }, #{ skill }, #{ start_date }, #{ end_date }, 'n')
+	</insert>
+	
+	<select id="getProgramStorageData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminProgramModel">
+		select
+			  uid
+			, title
+			, language
+			, skill
+			, date_format(start_date, '%Y-%m-%d') as start_date
+			, date_format(end_date, '%Y-%m-%d') as end_date
+		from
+			tbl_program_storage
+	</select>
+	
+</mapper>

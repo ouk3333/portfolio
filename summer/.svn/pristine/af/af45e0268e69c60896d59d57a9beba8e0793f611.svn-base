@@ -1,0 +1,124 @@
+/**
+ * 
+ */
+var myHistory = [];
+
+function getContextPath() {
+	var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring(hostIndex, location.href.indexOf("/", hostIndex + 1));
+}
+
+var setPageTitle = function() {
+	var path = location.pathname.split('/')[2];
+	var pageTitle = "portfolio"; // 페이지 타이틀
+	var nav = "관리자 메인";
+	var pageName = "관리자";
+	
+	// id.page_name == pageName 으로 (오른쪽)
+	// id.page_name_nav == nav 로 (왼쪽)
+	
+	if( path == 'admin' ) {
+		
+		var second_path = location.pathname.split('/')[3];
+		
+		if( second_path == 'login' ) {
+			pageTitle += " - 관리자로그인";
+		} else if( second_path == 'powerGeneration' ) {
+			nav = "전력량";
+			pageName = "전력량 확인";
+		} else if( second_path == 'visitHistory' ) {
+			nav = "방문기록";
+			pageName = "방문기록 확인";
+		}
+		
+		pageTitle += " - 관리자페이지";
+		
+		$('#page_name').text(pageName);
+		$('#page_name_nav').text(nav);
+		
+	} else if( path == '') {
+		
+		pageTitle += " - 이동욱";
+		
+	}
+	
+	document.title = pageTitle;
+}
+
+var show_alert = function( type, msg, timer ) {
+	swal({
+		title: "",
+		text: msg,
+		icon: type,
+		timer: timer,
+		button: false
+	})
+}
+
+function pageLoad() {
+    history.pushState(null, null, location.href);
+    
+    window.onpopstate = function() {
+    	history.go(1);
+    };
+}
+
+function access_Visitor() {
+	
+	var item = sessionStorage.getItem("frozen_visitor");
+	
+	if( item != null ) {
+		return false;
+	}
+	
+	var browser = navigator.appName;
+	
+	sessionStorage.setItem("frozen_visitor", browser);
+
+	$.ajax({
+		url: getContextPath() + '/visitor',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			
+		},
+		cache: false,
+		success: function( data ) {
+			if( data.state != 'success' ) {
+				show_alert("warning", "서버에 문제가 발생했습니다.", 1500);
+				
+				setTimeout(function() {
+					location.href = getContextPath() + '/error/error500';
+				}, 1500);
+			}
+		},
+		error: function( error ) {
+			alert( "Server Error" );
+			location.href = getContextPath() + '/error/error500';
+		}
+	});
+}
+
+function onScroll(event){
+	var scrollPos = $(document).scrollTop() + 10;
+	
+	$('#scroll_nav a').each(function () {
+		var currLink = $(this);
+		var refElement = $(currLink.attr("href"));
+		var section_id = $(refElement).attr("id");
+		var section = $('section#' + section_id)
+		
+		if (section.position().top <= scrollPos && section.position().top + section.height() > scrollPos) {
+			$('#scroll_nav li a').removeClass("active");
+			currLink.addClass("active");
+		} else {
+			currLink.removeClass("active");
+		}
+    });
+}
+
+$(document).ready(function(){
+	setPageTitle();
+	access_Visitor();
+	pageLoad();
+});

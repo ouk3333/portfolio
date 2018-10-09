@@ -1,0 +1,89 @@
+/**
+ * 
+ */
+var myHistory = [];
+
+function getContextPath() {
+	var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring(hostIndex, location.href.indexOf("/", hostIndex + 1));
+}
+
+var setPageTitle = function() {
+	var path = location.pathname.split('/')[2];
+	var pageTitle = "portfolio";
+	
+	console.log( path );
+	
+	if( path == 'admin' ) {
+		
+		if( location.pathname.split('/')[3] == 'login' ) {
+			pageTitle += " - 로그인";
+		} else {
+			pageTitle += " - 관리자페이지";
+		}
+		
+	} else if( path == '') {
+		
+		pageTitle += " - 이동욱";
+		
+	}
+	
+	document.title = pageTitle;
+}
+
+var show_alert = function( type, msg, timer ) {
+	swal({
+		title: "",
+		text: msg,
+		icon: type,
+		timer: timer,
+		button: false
+	})
+}
+
+function pageLoad() {
+    //window.history.pushState(myHistory, "admin", "adminMain");
+	//window.location.replace(self.location);
+}
+
+function access_Visitor() {
+	
+	var item = sessionStorage.getItem("frozen_visitor");
+	
+	if( item != null ) {
+		return false;
+	}
+	
+	var browser = navigator.appName;
+	
+	sessionStorage.setItem("frozen_visitor", browser);
+
+	$.ajax({
+		url: getContextPath() + '/visitor',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			
+		},
+		cache: false,
+		success: function( data ) {
+			if( data.state != 'success' ) {
+				show_alert("warning", "서버에 문제가 발생했습니다.", 1500);
+				
+				setTimeout(function() {
+					location.href = getContextPath() + '/error/error500';
+				}, 1500);
+			}
+		},
+		error: function( error ) {
+			alert( "Server Error" );
+			location.href = getContextPath() + '/error/error500';
+		}
+	});
+}
+
+$(document).ready(function(){
+	setPageTitle();
+	access_Visitor();
+	pageLoad();
+});

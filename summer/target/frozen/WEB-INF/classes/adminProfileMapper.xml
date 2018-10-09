@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminTimelineDAO">
+	
+	<select id="getTimelineData" resultType="kr.co.frozen.model.AdminTimelineModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_timeline
+		order by
+			order_no asc
+	</select>
+	
+	<insert id="createTimelineData" parameterType="hashMap">
+		insert into tbl_timeline_storage
+		( event, year, month, day, remarks, sw )
+		values
+		( #{ event }, #{ year }, #{ month }, #{ day }, #{ remarks }, #{ sw } )
+	</insert>
+	
+	<select id="getTimelineStorageData" resultType="kr.co.frozen.model.AdminTimelineModel" parameterType="hashMap">
+		select
+		 	  uid
+			, event
+			, year
+			, month
+			, day
+			, remarks
+		from
+			tbl_timeline_storage
+		where
+			sw = 'n'
+	</select>
+	
+	<delete id="deleteTimelineStorageData" parameterType="hashMap">
+		delete from
+			tbl_timeline_storage
+		where
+			uid = #{ uid }
+	</delete>
+
+	<update id="modifyTimelineStorageData" parameterType="hashMap">
+		update
+			tbl_timeline_storage
+		set
+			  event = #{ event }
+			, year = #{ year }
+			, month = #{ month }
+			, day = #{ day }
+			, remarks = #{ remarks }
+		where
+			uid = #{ uid }
+	</update>
+	
+	<select id="getTimelineStorageData_single" resultType="kr.co.frozen.model.AdminTimelineModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_timeline_storage
+		where
+			uid = #{ uid }
+	</select>
+	
+	<select id="getMaxTimelineStorageOrderNo" resultType="int" parameterType="hashMap">
+		select
+			COALESCE(max(order_no) + 1, 1)
+		from
+			tbl_timeline
+	</select>
+	
+	<insert id="addTimelineStorageData" parameterType="hashMap">
+		insert into tbl_timeline
+		( uid, event, year, month, day, remarks, order_no )
+		values
+		( #{ uid }, #{ event }, #{ year }, #{ month }, #{ day }, #{ remarks }, #{ order_no } )
+	</insert>
+	
+	<update id="afterAddTimelineStorageData" parameterType="hashMap">
+		update
+			tbl_timeline_storage
+		set
+			sw = 'y'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<delete id="removeTimelineData" parameterType="hashMap">
+		delete from
+			tbl_timeline
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<update id="afterRemoveTimelineData" parameterType="hashMap">
+		update
+			tbl_timeline_storage
+		set
+			sw = 'n'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<select id="getModifyTimelineData" resultType="kr.co.frozen.model.AdminTimelineModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_timeline_storage
+		where
+			uid = #{ uid }
+	</select>
+
+	<update id="setTimelineDataOrdering" parameterType="hashMap">
+		update
+			tbl_timeline
+		set
+			order_no = #{ after_no }
+		where
+			order_no = #{ before_no }
+	</update>
+	
+	<select id="setAutoReordering_select" resultType="kr.co.frozen.model.AdminTimelineModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_timeline
+		order by
+			order_no asc
+	</select>
+	
+</mapper>

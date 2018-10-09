@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminDAO">
+	
+	<select id="getAdminID" resultType="kr.co.frozen.model.MemberModel" parameterType="hashMap">
+		select
+			id
+		from
+			tbl_user
+		where
+			id = #{ userID }
+	</select>
+	
+	<select id="checkAdmin" resultType="kr.co.frozen.model.MemberModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_user
+		where
+			id = #{ userID }
+	</select>
+	
+	<select id="getConfiguration" resultType="kr.co.frozen.model.ConfigModel">
+		select
+			  ifnull(page_title, '') as page_title
+			, ifnull(main_color, '') as main_color
+			, ifnull(point_color, '') as point_color
+			, ifnull(title_color, '') as title_color
+			, ifnull(sidemenu_image, '') as sidemenu_image
+			, ifnull(program_layout, '') as program_layout
+		from
+			tbl_setting
+		order by
+			uid desc
+		limit 1
+	</select>
+	
+	<insert id="setConfiguration" parameterType="hashMap">
+		insert into tbl_setting
+		( page_title, main_color, point_color, title_color, sidemenu_image, program_layout )
+		values
+		( #{ page_title }, #{ main_color }, #{ point_color }, #{ title_color }, #{ sidemenu_image }, #{ program_layout } )
+	</insert>
+	
+</mapper>

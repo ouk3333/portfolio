@@ -1,0 +1,4 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://127.0.0.1:3306/ouk3333
+username=ouk3333
+password=frozen235

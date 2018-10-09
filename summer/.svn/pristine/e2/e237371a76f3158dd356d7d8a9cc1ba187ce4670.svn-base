@@ -1,0 +1,73 @@
+package kr.co.frozen.util;
+
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import kr.co.frozen.dao.AdminDAO;
+import kr.co.frozen.model.MemberModel;
+
+@Component("admin")
+public class AdminUtil {
+
+	@Autowired
+	private SqlSession sqlsession;
+	
+	public boolean getAdminID( String userID ) {
+		
+		AdminDAO 				dao 		= sqlsession.getMapper( AdminDAO.class );
+		HashMap<String, Object> parameter 	= new HashMap<String, Object>();
+		MemberModel				member		= null;
+		
+		parameter.put( "userID", userID );
+		
+		member = dao.getAdminID(parameter);
+		
+		if( member != null ) {
+			
+			if( member.getId().equals(userID) == false ) {
+				return false;
+			}
+			
+			return true;
+			
+		} else {
+			return false;
+		}
+	}
+	
+	public int checkAdmin( String userID, String password, HttpServletRequest request ) {
+		
+		AdminDAO				dao 		= sqlsession.getMapper( AdminDAO.class );
+		HashMap<String, Object> parameter 	= new HashMap<String, Object>();
+		MemberModel				member		= null;
+		HttpSession				session		= null;
+		
+		parameter.put( "userID"		, userID );
+		
+		member = dao.checkAdmin( parameter );
+		
+		if( member == null ) {
+			return 0; // 존재하지 않는 관리자
+		}
+		
+		if( member.getPassword().equals(password) == false ) {
+			return -1; // 비밀번호 불일치
+		}
+		
+		if( member.getType().equals("A") == false ) {
+			return 0; // 존재하지 않는 관리자
+		}
+		session = request.getSession();
+		
+		session.setAttribute( "userInfo", member );
+		
+		return 1;
+	}
+	
+}

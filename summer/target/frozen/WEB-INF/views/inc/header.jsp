@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- CSS -->
+<link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- ------------------------------------------------------------ -->
+
+<!-- JAVASCRIPT -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery.min.js"></script><!-- jquery -->
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.js"></script><!-- bootstrap -->
+<script src="<%= request.getContextPath() %>/resources/js/sweetalert.min.js"></script><!-- bootstrap -->
+<script src="<%= request.getContextPath() %>/resources/js/Osinfo.js"></script><!-- OS type -->
+<script src="<%= request.getContextPath() %>/resources/js/common.js"></script><!-- bootstrap -->
+
+<!-- login header -->

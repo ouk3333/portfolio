@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- CSS -->
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/bootstrap.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/font-awesome.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/resume.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/font.css" rel="stylesheet">
+
+<style>
+body { font-family: "Nanum Gothic" !important; }
+
+/* .bg-primary { background-color: #00D8C8 !important; } */
+.bg-primary { background-color: #193038 !important; }
+
+a.nav-link { color: #fff !important; opacity: 0.8 !important; }
+a.nav-link:hover { color: #F29661 !important; opacity: 1.0 !important; }
+a.active { color: #F29661 !important; opacity: 1.0 !important; }
+
+a { color: #F29661 !important; opacity: 1.0 !important; }
+
+.point-color { color: #F29661 !important; opacity: 1.0 !important; }
+
+.nav-image { background: url('/frozen/resources/css/img/portfolio-main-compress.jpg'); background-size: cover; }
+.section-color-setting { background-color: #FAFAFA !important; }
+
+.content-left { text-align: left; }
+.content-right { text-align: right; }
+.content-center { text-align: center; }
+
+.content-title { font-size: 50px; font-weight: bold; }
+
+</style>

@@ -1,0 +1,125 @@
+package kr.co.frozen.util;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.jdom.Attribute;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import kr.co.frozen.dao.AdminDAO;
+import kr.co.frozen.model.MemberModel;
+
+@Component("admin")
+public class AdminUtil {
+
+	@Autowired
+	private SqlSession sqlsession;
+	
+	public boolean getAdminID( String userID ) {
+		
+		AdminDAO 				dao 		= sqlsession.getMapper( AdminDAO.class );
+		HashMap<String, Object> parameter 	= new HashMap<String, Object>();
+		MemberModel				member		= null;
+		
+		parameter.put( "userID", userID );
+		
+		member = dao.getAdminID(parameter);
+		
+		if( member != null ) {
+			
+			if( member.getId().equals(userID) == false ) {
+				return false;
+			}
+			
+			return true;
+			
+		} else {
+			return false;
+		}
+	}
+	
+	public int checkAdmin( String userID, String password, HttpServletRequest request ) {
+		
+		AdminDAO				dao 		= sqlsession.getMapper( AdminDAO.class );
+		HashMap<String, Object> parameter 	= new HashMap<String, Object>();
+		MemberModel				member		= null;
+		HttpSession				session		= null;
+		
+		parameter.put( "userID"		, userID );
+		
+		member = dao.checkAdmin( parameter );
+		
+		if( member == null ) {
+			return 0; // 존재하지 않는 관리자
+		}
+		
+		if( member.getPassword().equals(password) == false ) {
+			return -1; // 비밀번호 불일치
+		}
+		
+		if( member.getType().equals("A") == false ) {
+			return 0; // 존재하지 않는 관리자
+		}
+		session = request.getSession();
+		
+		session.setAttribute( "userInfo", member );
+		
+		return 1;
+	}
+	
+	public HashMap<String, Object> getPowerGenerationData() throws IOException, JDOMException {
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		SAXBuilder jdom = new SAXBuilder();
+		String serviceURL = "https://openapi.kpx.or.kr/openapi/sukub5mMaxDatetime/getSukub5mMaxDatetime?ServiceKey=";
+		String serviceKey = "7g8RK%2B6ntztinVHQrDyu3VfXZF9RHDqNWE113%2B1Rud4%2B2FAZ6wvZpYQwK0dr5veioTcNa2GfFNJ3zsnYOTLsLQ%3D%3D";
+		URL url = new URL(serviceURL + serviceKey);
+		
+		Document document = jdom.build( url.openConnection().getInputStream() );
+		Element root = document.getRootElement();
+		Element header = root.getChild("header");
+		
+		List<Element> header_list = header.getChildren();
+		
+		for( int i = 0; i < header_list.size(); i++ ) {
+			if( header_list.get(i).getName().equals("resultCode") ) {
+				Element resultCode = (Element) header_list.get(i);
+				
+				if( resultCode.getValue().equals("00") == false ) {
+					result.put( "state", "error" );
+					
+					return result;
+				}
+			}
+		}
+		
+		Element body = root.getChild("body");
+		Element body_outer = body.getChild("items");
+		Element body_inner = body_outer.getChild("item");
+		
+		List<Element> body_list = body_inner.getChildren();
+		
+		for( int i = 0; i < body_list.size(); i++ ) {
+			Element node = body_list.get(i);
+			
+			result.put( node.getName(), node.getValue() );
+		}
+		
+		result.put( "state", "success" );
+		
+		return result;
+	}
+}

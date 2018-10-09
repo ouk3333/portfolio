@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminIntroDAO">
+	
+	<select id="getIntroData" resultType="kr.co.frozen.model.AdminIntroModel" parameterType="hashMap">
+		select
+			  uid
+			, intro
+			, date_format(write_time, '%Y-%m-%d %H:%i:%s') as write_time
+			, marker
+			, preserve
+			, delay
+		from
+			tbl_intro
+		order by
+			uid desc
+		limit 1
+	</select>
+	
+	<insert id="setIntroData" parameterType="hashMap">
+		insert into tbl_intro
+		( intro, write_time, marker, preserve, delay )
+		values
+		( #{ intro }, #{ write_time }, #{ marker }, #{ preserve }, #{ delay } )
+	</insert>
+	
+</mapper>

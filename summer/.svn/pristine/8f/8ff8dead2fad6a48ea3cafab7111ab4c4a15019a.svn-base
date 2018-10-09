@@ -1,0 +1,182 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- CSS -->
+<link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/adminlte.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/font.css" rel="stylesheet">
+
+<!-- ------------------------------------------------------------ -->
+
+<!-- JAVASCRIPT -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery.min.js"></script><!-- jquery -->
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.js"></script><!-- bootstrap -->
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/sweetalert.min.js"></script><!-- sweetalert -->
+<script src="<%= request.getContextPath() %>/resources/js/adminlte.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
+
+<head>
+<style>
+	body {
+		font-size: 14px !important;
+		font-family: "Nanum Gothic" !important;
+	}
+	
+	a.top-menu {
+		margin-top: -5px;
+	}
+	
+	.user-panel:hover { cursor: pointer; }
+	.user-menu-on { display: block; background: #343a40; color: #fff; position: absolute; left: 20%; width: 50%; margin-top: -25px; border: 1px solid #4f5962; padding: 3px; }
+	.user-menu-off { display: none; }
+	.user-panel-contents { cursor: pointer; }
+
+	div.info-box { cursor: pointer; }
+	div.padding { padding-top: 15px; padding-bottom: 15px; }
+	div.tooltip { font-size: 12px !important; font-family: "Nanum Gothic" !important; }
+	
+	div.dashboard-back { padding-top: 25px; }
+	span.dashboard-left { padding: 10px 10px 10px 0; border-right: 1px solid #d3d3d3; font-size: 18px; font-weight: bold; }
+	span.dashboard-right { font-weight: bold; font-size: 18px; }
+	
+	.dt-center { text-align: center; }
+	.dt-left { text-align: left; }
+	.dt-right { text-align: right; }
+</style>
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper">
+	<!-- Navbar -->
+	<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+		<!-- Left navbar links -->
+		<ul class="navbar-nav">
+			<!-- <li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+				</li> -->
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="${ pageContext.request.contextPath }/admin/adminMain" class="nav-link top-menu"> 메인 </a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="${ pageContext.request.contextPath }/admin/visitHistory" class="nav-link top-menu"> 방문기록 </a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="${ pageContext.request.contextPath }/admin/powerGeneration" class="nav-link top-menu"> 전력량 </a>
+			</li>
+		</ul>
+	</nav>
+	<!-- /.navbar -->
+
+	<!-- Main Sidebar Container -->
+	<aside class="main-sidebar sidebar-dark-primary elevation-4">
+		<!-- Brand Logo -->
+		<a href="${ pageContext.request.contextPath }/admin/adminMain" class="brand-link">
+			<img src="${ pageContext.request.contextPath }/resources/css/img/Frozen-admin-logo.png" alt="Frozen-admin-logo" class="brand-image img-circle elevation-3" style="opacity: 0.8; float: unset;">
+			<span class="brand-text font-weight-light">Frozen-admin</span>
+		</a>
+
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<!-- Sidebar user panel (optional) -->
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex" onclick="profile_dropdown()">
+			<div class="image">
+				<img src="${ pageContext.request.contextPath }/resources/css/img/profile.jpg" class="img-circle elevation-2" alt="User Image" style="width: 3.1rem;">
+			</div>
+			<div class="info">
+				<a class="d-block">이동욱</a>
+			</div>
+		</div>
+		<div class="user-menu-off" id="user_panel">
+			<div class="user-panel-contents" onclick="admin_logout()">
+				<i class="fa fa-caret-right" style="font-size: 14px;"></i>&nbsp;로그아웃
+			</div>
+		</div>
+
+	<!-- Sidebar Menu -->
+	<nav class="mt-2">
+		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+			<li class="nav-item has-treeview"><!-- menu-open / active -->
+				<a href="#" class="nav-link">
+					<i class="nav-icon fa fa-dashboard"></i>
+					<p> 관리 <i class="right fa fa-angle-left"></i> </p>
+            	</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a href="./index.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>Dashboard v1</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="./index2.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>Dashboard v2</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="./index3.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>Dashboard v3</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item has-treeview">
+				<a href="#" class="nav-link">
+					<i class="nav-icon fa fa-pie-chart"></i>
+					<p> 포트폴리오 <i class="right fa fa-angle-left"></i> </p>
+				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a href="pages/charts/chartjs.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>구현예정 2단계</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="pages/charts/flot.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>프로그램</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="pages/charts/inline.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>보유기술</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="pages/charts/inline.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>대내외 활동</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="pages/charts/inline.html" class="nav-link">
+							<i class="fa fa-circle-o nav-icon"></i>
+							<p>연락처</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="nav-header">MORE</li>
+			
+			<li class="nav-item">
+				<a href="pages/calendar.html" class="nav-link">
+					<i class="nav-icon fa fa-calendar"></i>
+					<p>Calendar<span class="badge badge-info right">2</span></p>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<!-- /.sidebar-menu -->
+	</div>
+</aside>

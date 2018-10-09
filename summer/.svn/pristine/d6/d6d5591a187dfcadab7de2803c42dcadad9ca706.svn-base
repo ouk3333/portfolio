@@ -1,0 +1,112 @@
+package kr.co.frozen.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.google.gson.JsonObject;
+
+import kr.co.frozen.dao.MainDAO;
+import kr.co.frozen.model.MainModel;
+import kr.co.frozen.util.VisitorUtil;
+
+@Controller
+public class MainController {
+	
+	private Logger logger = LoggerFactory.getLogger( this.getClass() );
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Resource
+	private VisitorUtil visitor;
+	
+	@RequestMapping(value="/")
+	public String testMethod( HttpServletRequest request, HttpServletResponse response,
+			Model model) throws IOException {
+		
+		JsonObject 				json 		= new JsonObject();
+		PrintWriter				out 		= response.getWriter();
+		MainDAO					dao			= sqlSession.getMapper( MainDAO.class );
+		HashMap<String, Object> parameter 	= new HashMap<String, Object>();
+		
+		model.addAttribute( "title", "Coming Soon" );
+		
+		/*File file = new File("/");
+		
+		long totalSpace = file.getTotalSpace();
+		long freeSpace = file.getFreeSpace();
+		long usableSpace = file.getUsableSpace();
+		
+		double diskUsage = (totalSpace - freeSpace) * 100d / totalSpace;
+		
+		System.out.println( "disk Usage : " + Math.round(diskUsage) );*/
+		
+		return "comingsoon";
+	}
+	
+	@RequestMapping(value="/portfolio")
+	public String goCommingSoon( HttpServletRequest request, HttpServletResponse response, Model model ) {
+		
+		
+		
+		return "index";
+	}
+	
+	@RequestMapping(value="/visitor")
+	public void getVisitorInfo( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		HashMap<String, Object> result 			= new HashMap<String, Object>();
+		HashMap<String, Object> parameter		= new HashMap<String, Object>();
+		PrintWriter 			out 			= response.getWriter();
+		JsonObject 				json 			= new JsonObject();
+		MainDAO					dao				= sqlSession.getMapper( MainDAO.class );
+		SimpleDateFormat		sdf				= new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+		String					client_ip		= "Unknown";
+		String					client_browser 	= "Unknown";
+		String					client_time		= "";
+		
+		result = visitor.getClientAddress(request);
+		
+		client_time = sdf.format(new Date());
+		
+		if( result.get("x-forwarded-for") != null ) {
+			client_ip = result.get("x-forwarded-for").toString();
+		}
+		
+		if( result.get("user-agent") != null ) {
+			client_browser = result.get("user-agent").toString();
+		}
+		
+		parameter.put( "ip"		, client_ip );
+		parameter.put( "browser", client_browser );
+		parameter.put( "time"	, client_time );
+		
+		// ClientInfo insert
+		dao.insertClientInfo( parameter );
+		
+		json.addProperty( "state", "success" );
+		
+		out.print( json );
+		
+		return;
+	}
+
+}

@@ -1,0 +1,80 @@
+package kr.co.frozen.controller;
+
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.util.HashMap;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.google.gson.JsonObject;
+
+import kr.co.frozen.util.AdminUtil;
+
+@RequestMapping(value="/admin")
+@Controller
+public class AdminController {
+	
+	@Resource
+	public AdminUtil util;
+	
+	@RequestMapping(value="/login")
+	public String goAdminLoginPage( HttpServletRequest request, HttpServletResponse response,
+			Model model ) {
+		
+		return "admin/login";
+	}
+	
+	@RequestMapping(value="/adminIdCheck")
+	public void adminIdCheck( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		PrintWriter				out 		= response.getWriter();
+		JsonObject 				json 		= new JsonObject();
+		String					userID		= URLDecoder.decode( request.getParameter("userID"), "UTF-8" );
+		boolean					id_exist	= false;
+		
+		try {
+			
+			json.addProperty( "state", "success" );
+			json.addProperty( "exist", "n" );
+			
+			if( userID != null ) {
+				
+				id_exist = util.getAdminID( userID );
+				
+				if( id_exist == true ) {
+					json.addProperty( "exist", "y" );
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			out.print( json );
+		}
+		
+		return;
+	}
+	
+	@RequestMapping(value="/adminLogin")
+	public void adminLogin( HttpServletResponse response, HttpServletRequest request ) throws IOException {
+		
+		PrintWriter				out 		= response.getWriter();
+		JsonObject 				json 		= new JsonObject();
+		String					userID		= URLDecoder.decode( request.getParameter("userID"), "UTF-8" );
+		boolean					id_exist	= false;
+		
+		return;
+	}
+
+}
