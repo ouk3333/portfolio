@@ -48,6 +48,36 @@ var getProgramData = function() {
 			$('#program_table').append("<tbody>");
 			for( var i = 0; i < data.data.length; i++ ) {
 				
+				var up_class = "fa fa-arrow-circle-o-up ";
+				var down_class = "fa fa-arrow-circle-o-down ";
+				
+				var up_func = "";
+				var down_func = "";
+				
+				if( i == 0 ) { // first row
+					up_class += "disabled-icon";
+				} else {
+					up_class += "page-icon";
+					up_func = "setProgramDataOrdering(this, " + (i + 1) + ")";
+				}
+				
+				if( i == data.data.length - 1 ) { // last row
+					down_class += "disabled-icon";
+				} else {
+					down_class += "page-icon";
+					down_func = "setProgramDataOrdering(this, " + (i + 1) + ")";
+				}
+				
+				var title = "<td>" + data.data[i].title + "</td>";
+				var language = "<td>" + data.data[i].language + "</td>";
+				var skill = "<td>" + data.data[i].skill + "</td>";
+				var start_date = "<td>" + data.data[i].start_date + "</td>";
+				var end_date = "<td>" + data.data[i].end_date + "</td>";
+				var image = "<td> wait </td>";
+				var order_no = "<td> <i class='" + up_class + "' style='font-size: 20px;' onclick='" + up_func + "' data-value='up'></i> &nbsp; <i class='" + down_class + "' style='font-size: 20px;' onclick='" + down_func + "' data-value='down'></i> </td>";
+				var button = "<td><input type='button' value='제거' class='btn btn-warning' onclick='removeProgramData(" + data.data[i].uid + ")'></td>";
+				
+				$('#program_table').append("<tr>" + title + language + skill + start_date + end_date + image + order_no + button + "</tr>");
 			}
 			$('#program_table').append("<tr>" + new_title + new_language + new_skill + new_start_date + new_end_date + new_image + new_order_no + new_button + "</tr>");
 			$('#program_table').append("</tbody>");
@@ -71,12 +101,12 @@ var getProgramData = function() {
 			"columnDefs": [
 				{ "width": "15%", "targets": 0, "className": "dt-center" },
 				{ "width": "10%", "targets": 1, "className": "dt-center" },
-				{ "width": "20%", "targets": 2, "className": "dt-center" },
+				{ "width": "30%", "targets": 2, "className": "dt-center" },
 				{ "width": "12.5%", "targets": 3, "className": "dt-center" },
 				{ "width": "12.5%", "targets": 4, "className": "dt-center" },
 				{ "width": "5%", "targets": 5, "className": "dt-center" },
 				{ "width": "5%", "targets": 6, "className": "dt-center" },
-				{ "width": "20%", "targets": 7, "className": "dt-center" }
+				{ "width": "10%", "targets": 7, "className": "dt-center" }
 			]
 		});
 		
@@ -176,18 +206,16 @@ var getProgramStorageData = function () {
 				return false;
 			}
 			
-			console.log( data );
-			
 			$('#program_storage_table').append("<tbody>");
 			for( var i = 0; i < data.data.length; i++ ) {
 				
-				var title = "<td>" + data.data[i].title + "</td>";
-				var language = "<td>" + data.data[i].language + "</td>";
-				var skill = "<td>" + data.data[i].skill + "</td>";
-				var start_end_date = "<td> <span class='tooltips' data-toggle='tooltip' data-placement='bottom' data-original-title='" + data.data[i].start_date + " ~ " + data.data[i].end_date + "'>" + data.data[i].start_date + " ... </span> </td>";
-				var delete_button = "<input type='button' value='삭제' class='btn btn-danger'>";
-				var modify_button = "&nbsp<input type='button' value='수정' class='btn btn-info'>&nbsp";
-				var add_button = "<input type='button' value='등록' class='btn btn-success'>";
+				var title = "<td>" + decreaseWord(data.data[i].title, 15) + "</td>";
+				var language = "<td>" + decreaseWord(data.data[i].language, 8) + "</td>";
+				var skill = "<td>" + decreaseWord(data.data[i].skill, 30) + "</td>";
+				var start_end_date = "<td>" + decreaseWord(data.data[i].start_date + ' ~ ' + data.data[i].end_date, 10) + "</td>";
+				var delete_button = "<input type='button' value='삭제' class='btn btn-danger' onclick='deleteProgramStorageData(" + data.data[i].uid + ")'>";
+				var modify_button = "&nbsp<input type='button' value='수정' class='btn btn-info' onclick='program_modify_modal(" + data.data[i].uid + ")'>&nbsp";
+				var add_button = "<input type='button' value='등록' class='btn btn-success' onclick='insertProgramStoragedata(" + data.data[i].uid + ")'>";
 				var buttons = "<td>" + delete_button + modify_button + add_button + "</td>";
 				
 				$('#program_storage_table').append("<tr>" + title + language + skill + start_end_date + buttons + "</tr>");
@@ -223,6 +251,244 @@ var getProgramStorageData = function () {
 			}
 		});
 		
+	});
+	
+}
+
+var deleteProgramStorageData = function( uid ) {
+	
+	swal({
+		title: "데이터를 삭제하시겠습니까?",
+		text: "삭제된 데이터는 복구되지 않습니다.",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonClass: "btn-danger",
+		confirmButtonText: "삭제",
+		cancelButtonText: "취소",
+		closeOnConfirm: true
+	},
+	function() {
+		
+		$.ajax({
+			url: getContextPath() + '/admin/program/deleteProgramStorageData',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				'uid': uid
+			},
+			error: function( error ) {
+				alert("Server Error");
+			},
+			success: function( data ) {
+				
+				if( data.state != 'success' ) {
+					show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+					console.log( data.error );
+					return false;
+				}
+				
+			}
+		})
+		.done(function( data ) {
+			getProgramStorageData();
+		});
+		
+	});
+	
+}
+
+var program_modify_modal = function( uid ) {
+	
+	$('#program_modify_modal').modal({
+		show: true,
+		keyboard: false
+	});
+	
+	getModifyProgramStorageData( uid );
+}
+
+var getModifyProgramStorageData = function( uid ) {
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/getModifyProgramStorageData',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			'uid': uid
+		},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+			$('#modify_program_title').val( data.title );
+			$('#modify_program_language').val( data.language );
+			$('#modify_program_start_date').val( data.start_date );
+			$('#modify_program_end_date').val( data.end_date );
+			$('#modify_program_skill').val( data.skill );
+			
+			$('#modify_program_button').attr("onclick", "modifyProgramStorageData(" + data.uid + ")");
+			
+		}
+	});
+	
+}
+
+var modifyProgramStorageData = function( uid ) {
+	
+	var modify = {};
+	var title = $('#modify_program_title').val();
+	var language = $('#modify_program_language').val();
+	var start_date = $('#modify_program_start_date').val();
+	var end_date = $('#modify_program_end_date').val();
+	var skill = $('#modify_program_skill').val();
+	
+	modify.title = title;
+	modify.language = language;
+	modify.start_date = start_date;
+	modify.end_date = end_date;
+	modify.skill = skill;
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/modifyProgramStorageData',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			'uid': uid,
+			'modify': JSON.stringify(modify)
+		},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+		}
+	})
+	.done(function(data) {
+		getProgramStorageData();
+	});
+	
+}
+
+var insertProgramStoragedata = function( uid ) {
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/insertProgramStoragedata',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			'uid': uid
+		},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+		}
+	})
+	.done(function( data ) {
+		getProgramData();
+		getProgramStorageData();
+	});
+	
+}
+
+var removeProgramData = function( uid ) {
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/removeProgramData',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			'uid': uid
+		},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+			setAutoOrderingProgram();
+		}
+	});
+	
+}
+
+var setAutoOrderingProgram = function() {
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/setAutoOrderingProgram',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+		}
+	})
+	.done(function( data ) {
+		getProgramData();
+	});
+	
+}
+
+var setProgramDataOrdering = function( object, order_no ) {
+	
+	var type = $(object).attr("data-value");
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/setProgramDataOrdering',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			'type': type,
+			'order_no': order_no
+		},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+			getProgramData();
+			
+		}
 	});
 	
 }

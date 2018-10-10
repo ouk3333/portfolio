@@ -72,4 +72,55 @@
 	</div>
 </div>
 
+<div class="modal fade in" id="program_modify_modal">
+	<div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;">
+			
+		<!-- modal contents -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span> 수정 </span>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+				
+				<div class="row dt-center">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div> 제목 </div>
+						<input type="text" class="form-control" id="modify_program_title" placeholder="프로그램 명칭">
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div> 언어 </div>
+						<input type="text" class="form-control" id="modify_program_language" placeholder="사용한 언어">
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div> 시작일 </div>
+						<input type="date" class="form-control" id="modify_program_start_date">
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div> 종료일 </div>
+						<input type="date" class="form-control" id="modify_program_end_date">
+					</div>
+				</div>
+				
+				<div class="padding-sm"></div>
+				
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div> 기술 </div>
+						<input type="text" class="form-control" id="modify_program_skill" placeholder="사용한 기술">
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal" id="modify_program_button">저장</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
 <%@ include file="/WEB-INF/views/inc/adminFooter.jsp" %>

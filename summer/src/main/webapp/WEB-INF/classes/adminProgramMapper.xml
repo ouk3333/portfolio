@@ -7,7 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getProgramData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminProgramModel">
 		select
-			*
+			  uid
+			, title
+			, language
+			, skill
+			, date_format(start_date, '%Y-%m-%d') as start_date
+			, date_format(end_date, '%Y-%m-%d') as end_date
+			, order_no
 		from
 			tbl_program
 		order by
@@ -31,6 +37,81 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, date_format(end_date, '%Y-%m-%d') as end_date
 		from
 			tbl_program_storage
+		where
+			sw = 'n'
 	</select>
+	
+	<delete id="deleteProgramStorageData" parameterType="hashMap">
+		delete from
+			tbl_program_storage
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<select id="getModifyProgramStorageData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminProgramModel">
+		select
+			  uid
+			, title
+			, language
+			, skill
+			, date_format(start_date, '%Y-%m-%d') as start_date
+			, date_format(end_date, '%Y-%m-%d') as end_date
+		from
+			tbl_program_storage
+		where
+			uid = #{ uid }
+	</select>
+	
+	<update id="modifyProgramStorageData" parameterType="hashMap">
+		update
+			tbl_program_storage
+		set
+			  title = #{ title }
+			, language = #{ language }
+			, start_date = #{ start_date }
+			, end_date = #{ end_date }
+			, skill = #{ skill }
+		where
+			uid = #{ uid }
+	</update>
+	
+	<select id="getMaxProgramStorageOrderNo" resultType="int">
+		select
+			COALESCE(max(order_no) + 1, 1)
+		from
+			tbl_program
+	</select>
+	
+	<insert id="insertProgramStoragedata" parameterType="hashMap">
+		insert into tbl_program
+		(uid, title, language, start_date, end_date, skill, order_no)
+		values
+		(#{ uid }, #{ title }, #{ language }, #{ start_date }, #{ end_date }, #{ skill }, #{ order_no })
+	</insert>
+	
+	<update id="afterInsertProgramStoragedata" parameterType="hashMap">
+		update
+			tbl_program_storage
+		set
+			sw = 'y'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<delete id="removeProgramData" parameterType="hashMap">
+		delete from
+			tbl_program
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<update id="afterRemoveProgramData" parameterType="hashMap">
+		update
+			tbl_program_storage
+		set
+			sw = 'n'
+		where
+			uid = #{ uid }
+	</update>
 	
 </mapper>

@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="tables">
 		<if test="table_name == 'tbl_license'"> tbl_license </if>
 		<if test="table_name == 'tbl_timeline'"> tbl_timeline </if>
+		<if test="table_name == 'tbl_program'"> tbl_program </if>
 	</sql>
 	
 	<update id="setDataOrdering" parameterType="hashMap">

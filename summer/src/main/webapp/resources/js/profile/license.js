@@ -502,7 +502,7 @@ var setLicenseDataOrdering = function( object, order_no ) {
 		success: function( data ) {
 			
 			if( data.state != 'success' ) {
-				show_alert("warning", "데디터 처리 중 문제가 발생했습니다.", 1500);
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
 				console.log( data.error );
 				return false;
 			}

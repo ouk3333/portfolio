@@ -214,6 +214,17 @@ var oLanguageSetting = {
 	"infoFiltered": "총 _MAX_ 개 데이터 중"
 }
 
+var decreaseWord = function( value, index ) {
+	
+	var str = value;
+	
+	if( str.length > index ) {
+		str = "<span class='tooltips' data-toggle='tooltip' data-placement='bottom' data-original-title='" + value + "'>" + str.substring(0, index) + " ...</span>";
+	}
+	
+	return str;
+}
+
 $(document).ready(function(){
 	setPageName();
 	setCurrentMenuActive();

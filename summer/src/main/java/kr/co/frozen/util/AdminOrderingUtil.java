@@ -27,9 +27,6 @@ private static final Logger logger = LoggerFactory.getLogger( AdminTimelineUtil.
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Value("#{storage[storage]}")
-	private String dev_storage;
-	
 	public advancedUtil util = new advancedUtil();
 	
 	@Transactional
@@ -44,8 +41,6 @@ private static final Logger logger = LoggerFactory.getLogger( AdminTimelineUtil.
 		parameter.put( "table_name", table_name );
 		
 		try {
-			
-			logger.debug( parameter.toString() );
 			
 			if( parameter.get("type").toString().equals("up") ) {
 				
