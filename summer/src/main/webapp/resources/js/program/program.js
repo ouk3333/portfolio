@@ -73,7 +73,7 @@ var getProgramData = function() {
 				var skill = "<td>" + data.data[i].skill + "</td>";
 				var start_date = "<td>" + data.data[i].start_date + "</td>";
 				var end_date = "<td>" + data.data[i].end_date + "</td>";
-				var image = "<td> wait </td>";
+				var image = "<td> <a class='btn btn-app' onclick='getProgramImage(" + data.data[i].uid + ")'> <span class='badge bg-info'> " + data.data[i].image_cnt + " </span> <i class='fa fa-picture-o'></i> </a> </td>";
 				var order_no = "<td> <i class='" + up_class + "' style='font-size: 20px;' onclick='" + up_func + "' data-value='up'></i> &nbsp; <i class='" + down_class + "' style='font-size: 20px;' onclick='" + down_func + "' data-value='down'></i> </td>";
 				var button = "<td><input type='button' value='제거' class='btn btn-warning' onclick='removeProgramData(" + data.data[i].uid + ")'></td>";
 				
@@ -112,6 +112,13 @@ var getProgramData = function() {
 		
 	});
 	
+}
+
+var getProgramImage = function( uid ) {
+	
+	window.open( getContextPath() + "/admin/program/getProgramImage?uid=" + uid, "programImage", "width=1200, height=500" );
+	
+	return false;
 }
 
 var addProgramData = function() {

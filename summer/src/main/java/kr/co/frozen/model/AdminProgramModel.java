@@ -13,5 +13,6 @@ public class AdminProgramModel {
 	private String	end_date;
 	private String	sw;
 	private int		order_no;
+	private int		image_cnt;
 	
 }

@@ -45,4 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		( #{ page_title }, #{ main_color }, #{ point_color }, #{ title_color }, #{ sidemenu_image }, #{ program_layout } )
 	</insert>
 	
+	<select id="getApiKey" parameterType="hashMap" resultType="String">
+		select
+			value
+		from
+			tbl_api_key
+		where
+			api_key = #{ api_key }
+	</select>
+	
 </mapper>

@@ -7,15 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getProgramData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminProgramModel">
 		select
-			  uid
-			, title
-			, language
-			, skill
-			, date_format(start_date, '%Y-%m-%d') as start_date
-			, date_format(end_date, '%Y-%m-%d') as end_date
-			, order_no
+			  a.uid
+			, a.title
+			, a.language
+			, a.skill
+			, date_format(a.start_date, '%Y-%m-%d') as start_date
+			, date_format(a.end_date, '%Y-%m-%d') as end_date
+			, a.order_no
+		    , (select count(fid) from tbl_program_img where uid = a.uid) as image_cnt
 		from
-			tbl_program
+			tbl_program as a
 		order by
 			order_no asc
 	</select>
@@ -113,5 +114,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			uid = #{ uid }
 	</update>
+	
+	<insert id="programImageFileUpload" parameterType="hashMap">
+		insert into tbl_program_img_storage
+		(fid, org_name, convert_name, ext, path, remarks, upload_time, sw)
+		values
+		(#{ fid }, #{ org_name }, #{ convert_name }, #{ ext }, #{ path }, #{ remarks }, #{ upload_time }, 'n')
+	</insert>
+	
+	<select id="getPreviewProgramImage" parameterType="hashMap" resultType="kr.co.frozen.model.AdminProgramImageModel">
+		select
+			*
+		from
+			tbl_program_img_storage
+		where
+			fid = #{ uid }
+	</select>
 	
 </mapper>

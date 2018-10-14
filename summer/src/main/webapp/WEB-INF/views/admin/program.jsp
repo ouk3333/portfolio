@@ -3,6 +3,12 @@
 <%@ include file="/WEB-INF/views/inc/adminHeader.jsp" %>
 <script src="<%= request.getContextPath() %>/resources/js/program/program.js"></script>
 
+<style>
+
+.btn-app { padding: unset !important; min-width: 50px !important; height: 32px !important; padding-top: 5px !important; }
+
+</style>
+
 <div class="content-wrapper">
 	
 	<%@ include file="/WEB-INF/views/inc/adminNavigator.jsp" %>

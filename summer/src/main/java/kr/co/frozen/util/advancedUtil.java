@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -61,6 +62,15 @@ public class advancedUtil {
 		time = sdf.format(date);
 		
 		return time;
+	}
+	
+	public String getConvertFileName() {
+		
+		String fileName = "";
+		
+		fileName = UUID.randomUUID().toString();
+		
+		return fileName;
 	}
 	
 }

@@ -97,11 +97,15 @@ public class AdminUtil {
 	// 전력량 데이터 가져오기
 	public HashMap<String, Object> getPowerGenerationData() throws IOException, JDOMException {
 		
-		HashMap<String, Object> result = new HashMap<String, Object>();
+		HashMap<String, Object> result 		= new HashMap<String, Object>();
+		HashMap<String, Object> parameter	= new HashMap<String, Object>();
+		AdminDAO				dao			= sqlsession.getMapper( AdminDAO.class );
+		
+		parameter.put("api_key", "powerGeneration");
 		
 		SAXBuilder jdom = new SAXBuilder();
 		String serviceURL = "https://openapi.kpx.or.kr/openapi/sukub5mMaxDatetime/getSukub5mMaxDatetime?ServiceKey=";
-		String serviceKey = "7g8RK%2B6ntztinVHQrDyu3VfXZF9RHDqNWE113%2B1Rud4%2B2FAZ6wvZpYQwK0dr5veioTcNa2GfFNJ3zsnYOTLsLQ%3D%3D";
+		String serviceKey = dao.getApiKey(parameter);
 		URL url = new URL(serviceURL + serviceKey);
 		
 		Document document = jdom.build( url.openConnection().getInputStream() );

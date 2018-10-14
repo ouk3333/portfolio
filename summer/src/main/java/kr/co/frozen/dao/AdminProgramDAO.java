@@ -3,6 +3,7 @@ package kr.co.frozen.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.co.frozen.model.AdminProgramImageModel;
 import kr.co.frozen.model.AdminProgramModel;
 
 public interface AdminProgramDAO {
@@ -18,5 +19,7 @@ public interface AdminProgramDAO {
 	public void									afterInsertProgramStoragedata( HashMap<String, Object> parameter );
 	public void									removeProgramData( HashMap<String, Object> parameter );
 	public void									afterRemoveProgramData( HashMap<String, Object> parameter );
+	public void									programImageFileUpload( HashMap<String, Object> parameter );
+	public ArrayList<AdminProgramImageModel>	getPreviewProgramImage( HashMap<String, Object> parameter );
 	
 }

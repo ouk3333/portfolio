@@ -1,6 +1,11 @@
 package kr.co.frozen.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.annotation.Resource;
@@ -9,8 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
 
@@ -28,6 +38,9 @@ public class AdminProgramController {
 	
 	@Resource(name="adminOrdering")
 	public AdminOrderingUtil ordering;
+	
+	@Value("#{storage[storage]}")
+	private String dev_storage;
 	
 	@RequestMapping(value="/getProgramData")
 	public void getProgramData( HttpServletRequest request, HttpServletResponse response ) throws IOException {
@@ -139,4 +152,50 @@ public class AdminProgramController {
 		return;
 	}
 	
+	@RequestMapping(value="/programImageFileUpload")
+	public void programImageFileUpload( HttpServletRequest request, HttpServletResponse response, @RequestParam("uploadfile") MultipartFile file ) throws IOException {
+		
+		if( file.isEmpty() == false ) {
+			
+			try {
+
+				program.programImageFileUpload( request, file );
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return;
+	}
+	
+	@RequestMapping(value="/getPreviewProgramImage")
+	public void getPreviewProgramImage( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		PrintWriter			out		= response.getWriter();
+		JsonObject			json	= program.getPreviewProgramImage(request);
+		
+		out.print( json );
+		
+		return;
+	}
+	
+	@RequestMapping(value="/getPreview")
+	public void getPreview( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		program.getPreview( request, response );
+				
+		return;
+	}
+	
+	/*********** page move method ***********/
+	@RequestMapping(value="/getProgramImage")
+	public String getProgramImage( HttpServletRequest request, HttpServletResponse response, Model model ) throws IOException {
+		
+		model.addAttribute( "uid", request.getParameter("uid") );
+		
+		return "admin/programImage";
+	}
+	/*********** page move method ***********/
 }
