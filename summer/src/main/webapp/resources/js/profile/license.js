@@ -44,7 +44,7 @@ var getLicenseStorageData = function() {
 					"</thead>");
 
 			$('#license_storage_table').append("<tbody>");
-			console.log( data );
+			
 			for( var i = 0; i < data.data.length; i++ ) {
 				var type = "";
 				

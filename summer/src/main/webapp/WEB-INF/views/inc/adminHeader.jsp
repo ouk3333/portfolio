@@ -22,6 +22,7 @@
 <script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap-colorpicker.js"></script><!-- colorpicker -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery.knob.js"></script><!-- knob - chart -->
 <script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
 
@@ -68,9 +69,9 @@
 	.nav>li>a:focus { color: #fff; background-color: rgba(255,255,255,.1); }
 	
 	/* page, table icons */
-	i.page-icon { cursor: pointer; }
-	i.page-icon:hover { color: #00c0ef; }
-	i.disabled-icon { color: #6c757d; opacity: 0.65; }
+	.page-icon { cursor: pointer; }
+	.page-icon:hover { color: #00c0ef; }
+	.disabled-icon { color: #6c757d; opacity: 0.65; }
 	
 	/* input[text] - column */
 	span.line-height { line-height: 30px; }
@@ -91,6 +92,9 @@
 	
 	/* admin lte a tag hover */
 	.nav-pills .nav-link:not(.active):hover { color: #fff !important; background: #007bff; }
+	
+	/* admin page body title */
+	.card-title { font-size: 1.75rem !important; }
 </style>
 
 </head>
@@ -187,9 +191,9 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/experience?m=portfolio" class="nav-link experience">
+						<a href="${ pageContext.request.contextPath }/admin/activity?m=portfolio" class="nav-link experience">
 							<i class="fa fa-plus nav-icon text-info"></i>
-							<p>경험</p>
+							<p>활동</p>
 						</a>
 					</li>
 					<li class="nav-item">

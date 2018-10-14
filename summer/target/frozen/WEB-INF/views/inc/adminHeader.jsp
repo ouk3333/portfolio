@@ -22,6 +22,7 @@
 <script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap-colorpicker.js"></script><!-- colorpicker -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery.knob.js"></script><!-- knob - chart -->
 <script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
 
@@ -207,6 +208,12 @@
 				<a href="#" class="nav-link" onclick="javascript:alert('대기')">
 					<i class="nav-icon fa fa-list" aria-hidden="true"></i>
 					<p> 지원 목록 </p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link" onclick="javascript:alert('대기')">
+					<i class="nav-icon fa fa-cogs" aria-hidden="true"></i>
+					<p> 오픈소스 관리 </p>
 				</a>
 			</li>
 		</ul>

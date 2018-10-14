@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/inc/header.jsp" %>
 <link href="<%= request.getContextPath() %>/resources/css/adminlte.min.css" rel="stylesheet">
-<%-- <%@ include file="/WEB-INF/views/inc/adminHeader.jsp" %> --%>
 
 <html>
 <head>
@@ -134,6 +133,31 @@ $(document).ready(function() {
 		}
 		
 		login_proc( id, pass );
+	});
+	
+	$('#password_input').on('keydown', function(e) {
+		
+		if( e.keyCode == 13 ) {
+
+			var id = $('#id_input').val();
+			var pass = $('#password_input').val();
+			
+			if( id == "" ) {
+				show_alert("warning", "아이디를 입력하세요", 1500);
+				$('#id_input').focus();
+				return false;
+			}
+			
+			if( pass == "" ) {
+				show_alert("warning", "비밀번호를 입력하세요", 1500);
+				$('#password_input').focus();
+				return false;
+			}
+			
+			login_proc( id, pass );
+			
+		}
+		
 	});
 });
 </script>

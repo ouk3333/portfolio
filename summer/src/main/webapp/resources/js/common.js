@@ -75,9 +75,9 @@ var setPageName = function() {
 		} else if( second_path == 'skill' ) {
 			nav = "기술";
 			pageName = "기술 수정"
-		} else if( second_path == 'experience' ) {
-			nav = "경험";
-			pageName = "경험 수정";
+		} else if( second_path == 'actibity' ) {
+			nav = "활동";
+			pageName = "활동 수정";
 		} else if( second_path == 'contact' ) {
 			nav = "연락처";
 			pageName = "연락처 수정"
@@ -123,7 +123,7 @@ var setCurrentMenuActive = function() {
 			$('.program').addClass("active");
 		} else if( path == 'skill' ) {
 			$('.skill').addClass("active");
-		} else if( path == 'experience' ) {
+		} else if( path == 'activity' ) {
 			$('.experience').addClass("active");
 		} else if( path == 'contact' ) {
 			$('.contact').addClass("active");
@@ -141,6 +141,24 @@ var show_alert = function( type, msg, timer ) {
 		timer: timer,
 		showConfirmButton: false
 	})
+}
+
+var delete_alert = function( func ) {
+	swal({
+		title: "데이터를 삭제하시겠습니까?",
+		text: "삭제된 데이터는 복구되지 않습니다.",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonClass: "btn-danger",
+		confirmButtonText: "삭제",
+		cancelButtonText: "취소",
+		closeOnConfirm: true
+	},
+	function() {
+		
+		func();
+		
+	});
 }
 
 function pageLoad() {
@@ -223,6 +241,14 @@ var decreaseWord = function( value, index ) {
 	}
 	
 	return str;
+}
+
+var isEmpty = function( obj ) {
+	for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
 }
 
 $(document).ready(function(){

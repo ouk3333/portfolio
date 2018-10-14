@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminOrderingDAO">
+
+	<sql id="tables">
+		<if test="table_name == 'tbl_license'"> tbl_license </if>
+		<if test="table_name == 'tbl_timeline'"> tbl_timeline </if>
+		<if test="table_name == 'tbl_program'"> tbl_program </if>
+	</sql>
+	
+	<update id="setDataOrdering" parameterType="hashMap">
+		update
+			<include refid="tables" />
+		set
+			order_no = #{ after_no }
+		where
+			order_no = #{ before_no }
+	</update>
+	
+	<select id="getSortingData" parameterType="hashMap" resultType="hashMap">
+		select
+			*
+		from
+			<include refid="tables" />
+		order by
+			order_no asc
+	</select>
+	
+	<update id="setSortingData" parameterType="hashMap">
+		update
+			<include refid="tables" />
+		set
+			order_no = #{ after_no }
+		where
+			order_no = #{ before_no }	
+	</update>
+	
+</mapper>

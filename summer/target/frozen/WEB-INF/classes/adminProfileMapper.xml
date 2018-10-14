@@ -111,23 +111,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			uid = #{ uid }
 	</select>
-
-	<update id="setTimelineDataOrdering" parameterType="hashMap">
-		update
-			tbl_timeline
-		set
-			order_no = #{ after_no }
-		where
-			order_no = #{ before_no }
-	</update>
-	
-	<select id="setAutoReordering_select" resultType="kr.co.frozen.model.AdminTimelineModel" parameterType="hashMap">
-		select
-			*
-		from
-			tbl_timeline
-		order by
-			order_no asc
-	</select>
 	
 </mapper>

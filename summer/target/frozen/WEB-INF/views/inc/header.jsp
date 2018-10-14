@@ -3,6 +3,7 @@
 <!-- CSS -->
 <link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/sweetalert.css" rel="stylesheet">
 
 <!-- ------------------------------------------------------------ -->
 

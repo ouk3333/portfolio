@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminSkillDAO">
+	
+	<select id="getSkillAbilityData" resultType="kr.co.frozen.model.AdminSkillModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_skill
+		order by
+			ability desc;
+	</select>
+	
+	<select id="getSkillAbilityStorageData" resultType="kr.co.frozen.model.AdminSkillModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_skill_storage
+		where
+			sw = 'n'
+	</select>
+	
+	<insert id="insertSkillStorageData" parameterType="hashMap">
+		insert into tbl_skill_storage
+		(name, ability, background_color, font_color, sw)
+		values
+		(#{ name }, 0, #{ background_color }, #{ font_color }, 'n')
+	</insert>
+	
+	<delete id="deleteSkillStorageData" parameterType="hashMap">
+		delete from
+			tbl_skill_storage
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<select id="getSkillAbilityStorageData_single" resultType="kr.co.frozen.model.AdminSkillModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_skill_storage
+		where
+			uid = #{ uid }
+	</select>
+	
+	<insert id="addSkillStorageData" parameterType="hashMap">
+		insert into tbl_skill
+		(uid, name, ability, background_color, font_color, order_no)
+		values
+		(#{ uid }, #{ name }, #{ ability }, #{ background_color }, #{ font_color }, (select COALESCE(max(order_no) + 1, 1) from tbl_skill as temp))
+	</insert>
+	
+	<update id="afterAddSkillStorageData" parameterType="hashMap">
+		update
+			tbl_skill_storage
+		set
+			sw = 'y'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<update id="setModifySkillStorageData" parameterType="hashMap">
+		update
+			tbl_skill_storage
+		set
+			  name = #{ name }
+			, background_color = #{ background_color }
+			, font_color = #{ font_color }
+		where
+			uid = #{ uid }
+	</update>
+	
+	<delete id="removeSkillAbilityData" parameterType="hashMap">
+		delete from
+			tbl_skill
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<update id="afterRemoveSkillAbilityData" parameterType="hashMap">
+		update
+			tbl_skill_storage
+		set
+			sw = 'n'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<update id="setSkillAbilityData" parameterType="hashMap">
+		update
+			  tbl_skill as a
+			, tbl_skill_storage as b
+		set
+			  a.ability = #{ value }
+			, b.ability = #{ value }
+		where
+			a.uid = #{ uid } and b.uid = #{ uid };
+	</update>
+	
+</mapper>

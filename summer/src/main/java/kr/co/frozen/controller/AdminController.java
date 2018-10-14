@@ -206,10 +206,10 @@ public class AdminController {
 		return "admin/skill";
 	}
 	
-	@RequestMapping(value="/experience")
+	@RequestMapping(value="/activity")
 	public String goExperience( HttpServletRequest request, HttpServletResponse response, Model model ) {
 		
-		return "admin/experience";
+		return "admin/activity";
 	}
 	
 	@RequestMapping(value="/contact")

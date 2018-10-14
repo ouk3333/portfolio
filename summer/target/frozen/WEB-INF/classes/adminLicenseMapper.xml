@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			*
 		from
-			tbl_license;
+			tbl_license
+		order by
+			order_no asc;
 	</select>
 	
 	<insert id="addLicenseData" parameterType="hashMap">
@@ -27,5 +29,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			sw = 'n'
 	</select>
+	
+	<select id="getMaxLicenseStorageOrderNo" resultType="int" parameterType="hashMap">
+		select
+			COALESCE(max(order_no) + 1, 1)
+		from
+			tbl_license
+	</select>
+	
+	<select id="getLicenseStorageData_single" resultType="kr.co.frozen.model.AdminLicenseModel" parameterType="hashMap">
+		select
+			*
+		from
+			tbl_license_storage
+		where
+			uid = #{ uid }
+	</select>
+	
+	<insert id="addLicenseStorageData" parameterType="hashMap">
+		insert into tbl_license
+		(uid, type, name, remarks, order_no)
+		values
+		(#{ uid }, #{ type }, #{ name }, #{ remarks }, #{ order_no })
+	</insert>
+	
+	<update id="afterAddLicenseStorageData" parameterType="hashMap">
+		update
+			tbl_license_storage
+		set
+			sw = 'y'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<delete id="removeLicenseData" parameterType="hashMap">
+		delete from
+			tbl_license
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<update id="afterRemoveLicenseData" parameterType="hashMap">
+		update
+			tbl_license_storage
+		set
+			sw = 'n'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<delete id="deleteLicenseStorageData" parameterType="hashMap">
+		delete from
+			tbl_license_storage
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<update id="setModifyLicenseData" parameterType="hashMap">
+		update
+			tbl_license_storage
+		set
+			  type = #{ type }
+			, name = #{ name }
+			, remarks = #{ remarks }
+		where
+			uid = #{ uid }
+	</update>
 	
 </mapper>

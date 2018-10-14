@@ -52,7 +52,7 @@ var getTimelineData = function() {
 					up_func = "setTimelineDataOrdering(this, " + (i + 1) + ")";
 				}
 				
-				if( i == data.data.length - 1 ) {
+				if( i == data.data.length - 1 ) { // last row
 					down_class += "disabled-icon";
 				} else {
 					down_class += "page-icon";
@@ -401,23 +401,19 @@ var remove_timeline_data = function( uid ) {
 				return false;
 			}
 			
-			setAutoReordering();
-			
 		}
 	})
 	.done(function( data ) {
-		
-		getTimelineData();
-		
+		setAutoOrdering_timeline();
 	});
 	
 }
 
 // auto reordering
-var setAutoReordering = function() {
+var setAutoOrdering_timeline = function() {
 	
 	$.ajax({
-		url: getContextPath() + '/admin/profile/setAutoReordering',
+		url: getContextPath() + '/admin/profile/setAutoOrderingTimeline',
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
@@ -432,8 +428,10 @@ var setAutoReordering = function() {
 				return false;
 			}
 			
-			getTimelineData();
 		}
+	})
+	.done(function(data) {
+		getTimelineData();
 	});
 	
 }

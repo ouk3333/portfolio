@@ -70,7 +70,24 @@
 					<span class="line-height"> 사이드메뉴 이미지 : </span>
 				</div>
 				<div class="col-10">
-					<input type="text" class="form-control" style=" width: 80%; display: inline-flex" id="sidemenu_image">
+					<input type="text" class="form-control" style=" width: 80%; display: inline-flex" id="sidemenu_image" readonly="readonly">
+					<input type="button" value="파일 선택" class="btn btn-info">
+				</div>
+			</div>
+			
+			<div class="padding-sm"></div>
+			
+			<div class="row">
+				<div class="col-2 dt-right">
+					<span class="line-height"> 프로그램 레이아웃 : </span>
+				</div>
+				<div class="col-10">
+					<select id="program_layout" class="form-control" style="width: 10%;">
+						<option value=1> 1 </option>
+						<option value=2> 2 </option>
+						<option value=3> 3 </option>
+						<option value=4> 4 </option>
+					</select>
 				</div>
 			</div>
 			

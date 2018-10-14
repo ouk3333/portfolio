@@ -24,6 +24,7 @@ var getConfiguration = function() {
 			$('#point_color').val( data.point_color );
 			$('#title_color').val( data.title_color );
 			$('#sidemenu_image').val( data.sidemenu_image );
+			$('#program_layout').val( data.program_layout );
 			
 			$('#main_color').css("background-color", data.main_color);
 			$('#point_color').css("background-color", data.point_color);
@@ -47,6 +48,7 @@ var setConfiguration = function() {
 	var point_color = $('#point_color').val();
 	var title_color = $('#title_color').val();
 	var sidemenu_image = $('#sidemenu_image').val();
+	var program_layout = $('#program_layout').val();
 	
 	$.ajax({
 		url: getContextPath() + '/admin/config/setConfig',
@@ -57,7 +59,8 @@ var setConfiguration = function() {
 			'main_color': encodeURIComponent(main_color),
 			'point_color': encodeURIComponent(point_color),
 			'title_color': encodeURIComponent(title_color),
-			'sidemenu_image': encodeURIComponent(sidemenu_image)
+			'sidemenu_image': encodeURIComponent(sidemenu_image),
+			'program_layout': encodeURIComponent(program_layout)
 		},
 		success: function( data ) {
 			

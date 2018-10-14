@@ -30,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, ifnull(point_color, '') as point_color
 			, ifnull(title_color, '') as title_color
 			, ifnull(sidemenu_image, '') as sidemenu_image
+			, ifnull(program_layout, '') as program_layout
 		from
 			tbl_setting
 		order by
@@ -39,9 +40,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="setConfiguration" parameterType="hashMap">
 		insert into tbl_setting
-		( page_title, main_color, point_color, title_color, sidemenu_image )
+		( page_title, main_color, point_color, title_color, sidemenu_image, program_layout )
 		values
-		( #{ page_title }, #{ main_color }, #{ point_color }, #{ title_color }, #{ sidemenu_image } )
+		( #{ page_title }, #{ main_color }, #{ point_color }, #{ title_color }, #{ sidemenu_image }, #{ program_layout } )
 	</insert>
+	
+	<select id="getApiKey" parameterType="hashMap" resultType="String">
+		select
+			value
+		from
+			tbl_api_key
+		where
+			api_key = #{ api_key }
+	</select>
 	
 </mapper>

@@ -15,32 +15,6 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
-			
-			<!-- <div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<span style="padding-left: 10px;">타임라인</span>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 dt-right">
-					<span style="padding-right: 10px;"> <i class="fa fa-list tooltips page-icon" data-toggle="tooltip" data-placement="bottom" data-original-title="목록 보기" onclick="timeline_modal()"></i> </span>
-				</div>
-				
-				이전 목록 밑에 새로 등록
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<table id="timeline_table" class="table table-bordered table-hover dataTable dt-center" style="width: 100%;">
-						<thead>
-							<tr>
-								<th> 주요 행사 </th>
-								<th> 날짜 </th>
-								<th> 세부사항 </th>
-								<th> 순번 </th>
-								<th>  </th>
-							</tr>
-						</thead>
-					</table>
-				</div>
-			</div> -->
-			
-			<!-- <div class="padding-md"></div> -->
 
 			<div class="row">
 				<div class="col-12">
@@ -281,6 +255,49 @@
 			
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<div class="modal fade in" id="license_modify_modal">
+	<div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+		
+		<!-- modal contents -->
+		<div class="modal-content">
+			<div class="modal-header">
+				자격증 수정
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+				
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-center">
+						<div> 종류 </div>
+						<select id='modify_license_type' class="form-control">
+							<option value=1> 자격증 </option>
+							<option value=2> 면허증 </option>
+							<option value=3> 보류 </option>
+						</select>
+						<!-- <input type='text' placeholder='주요 행사 입력' class='form-control' id="modify_license_event"> -->
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-center">
+						<div> 자격증명 </div>
+						<input type='text' class='form-control' id="modify_license_name">
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 dt-center">
+						<div> 부가사항 </div>
+						<input type='text' placeholder='세부 사항 입력' class='form-control' id="modify_license_remarks">
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-info" data-dismiss="modal" id="modify_license_save">저장</button>
 			</div>
 		</div>
 		
