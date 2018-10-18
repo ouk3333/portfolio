@@ -2,6 +2,7 @@ package kr.co.frozen.util;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import kr.co.frozen.dao.AdminDAO;
@@ -192,9 +194,42 @@ public class AdminUtil {
 			
 			json.addProperty( "state", "error" );
 			json.addProperty( "error", e.getMessage() );
-			e.printStackTrace();
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
+	
+	public JsonObject getIconList() {
+		
+		JsonObject							json 	= new JsonObject();
+		JsonObject							result	= new JsonObject();
+		JsonArray							array	= new JsonArray();
+		ArrayList<HashMap<String, Object>> 	model	= null;
+		AdminDAO							dao		= sqlsession.getMapper( AdminDAO.class );
+		
+		try {
 			
+			model = dao.getIconList();
+			
+			for( HashMap<String, Object> data: model ) {
+				
+				result = new JsonObject();
+				
+				result.addProperty( "uid"	, Integer.parseInt(data.get("uid").toString()) );
+				result.addProperty( "name"	, data.get("name").toString() );
+				result.addProperty( "shape"	, data.get("shape").toString() );
+				
+				array.add( result );
+			}
+			
+			json.add( "data", array );
+			json.addProperty( "state", "success" );
+		} catch (Exception e) {
+			json.addProperty( "state", "error" );
+			json.addProperty( "error", e.getMessage() );
+			e.printStackTrace();
 		}
 		
 		return json;

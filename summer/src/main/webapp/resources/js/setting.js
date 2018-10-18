@@ -106,26 +106,6 @@ var setColorpickerConfig = function( data ) {
 	})
 }
 
-var func_RGBtoHEX = function( value ) {
-	var a = value.toString(16);
-	
-	return a.length == 1 ? "0" + a : a;
-}
-
-var getConvertRGBtoHEX = function( r, g, b ) {
-	return "#" + func_RGBtoHEX(r) + func_RGBtoHEX(g) + func_RGBtoHEX(b);
-}
-
-var getConvertHEXtoRGB = function( hex ) {
-	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	
-	return result ? {
-		r: parseInt(result[1], 16),
-		g: parseInt(result[2], 16),
-		b: parseInt(result[3], 16)
-	} : null;
-}
-
 var getConfigHist = function() {
 	$('#config_hist_modal').modal('toggle');
 }

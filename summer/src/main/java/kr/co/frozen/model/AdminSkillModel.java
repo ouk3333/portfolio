@@ -10,7 +10,6 @@ public class AdminSkillModel {
 	private	int		ability;
 	private String	background_color;
 	private String	font_color;
-	private	int		order_no;
 	private	String	sw;
 	
 }

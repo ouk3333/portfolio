@@ -33,7 +33,7 @@
 					<a class="nav-link js-scroll-trigger" href="#skill">skill</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#experience">experience</a>
+					<a class="nav-link js-scroll-trigger" href="#activity">activity</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link js-scroll-trigger" href="#contact">contact</a>
@@ -124,11 +124,11 @@
 			</div>
 		</section>
 
-		<section class="resume-section p-lg-4 d-column" id="experience">
+		<section class="resume-section p-lg-4 d-column" id="activity">
 			<div class="row">
 				<div class="col-sm-12 content-left">
 					<h2>
-						<span class="title-color">Experience</span>
+						<span class="title-color">Activity</span>
 					</h2>
 				</div>
 			</div>

@@ -9,12 +9,13 @@ import kr.co.frozen.model.MemberModel;
 
 public interface AdminDAO {
 
-	public MemberModel				getAdminID( HashMap<String, Object> parameter );
-	public MemberModel				checkAdmin( HashMap<String, Object> parameter );
+	public MemberModel							getAdminID( HashMap<String, Object> parameter );
+	public MemberModel							checkAdmin( HashMap<String, Object> parameter );
 	
-	public ConfigModel				getConfiguration(  );
-	public void						setConfiguration( HashMap<String, Object> parameter );
+	public ConfigModel							getConfiguration(  );
+	public void									setConfiguration( HashMap<String, Object> parameter );
 	
-	public String					getApiKey( HashMap<String, Object> parameter );
+	public String								getApiKey( HashMap<String, Object> parameter );
 	
+	public ArrayList<HashMap<String, Object>>	getIconList();
 }

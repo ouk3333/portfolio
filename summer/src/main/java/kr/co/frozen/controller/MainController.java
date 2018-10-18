@@ -80,19 +80,6 @@ public class MainController {
 		return;
 	}
 	
-	@RequestMapping(value="/getImageFile")
-	public void getImageFile( HttpServletRequest request, HttpServletResponse response ) throws IOException {
-		
-		try {
-			
-			
-		} catch (Exception e) {
-			
-		}
-		
-		return;
-	}
-	
 	/******************** page move method **********************/
 	
 	@RequestMapping(value="/")

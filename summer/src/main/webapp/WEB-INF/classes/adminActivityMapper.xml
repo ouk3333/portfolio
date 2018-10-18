@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminActivityDAO">
+	
+	<select id="getActivityData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminActivityModel">
+		select
+			*
+		from
+			tbl_activity
+		order by
+			order_no asc
+	</select>
+	
+	<select id="getActivityStorageData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminActivityModel">
+		select
+			*
+		from
+			tbl_activity_storage
+		where
+			sw = 'n'
+	</select>
+	
+	<insert id="insertActivityStorageData" parameterType="hashMap">
+		insert into tbl_activity_storage
+		(icon, year, contents, sw)
+		values
+		(#{ icon }, #{ year }, #{ contents }, 'n')
+	</insert>
+	
+	<delete id="deleteActivityStorageData" parameterType="hashMap">
+		delete from
+			tbl_activity_storage
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<select id="getActivityStorageData_single" parameterType="hashMap" resultType="kr.co.frozen.model.AdminActivityModel">
+		select
+			*
+		from
+			tbl_activity_storage
+		where
+			uid = #{ uid }
+	</select>
+	
+	<insert id="addActivityStorageDataModal" parameterType="hashMap">
+		insert into tbl_activity
+		(uid, icon, year, contents, order_no)
+		values
+		(#{ uid }, #{ icon }, #{ year }, #{ contents }, (select COALESCE(max(order_no) + 1, 1) from tbl_activity as temp))
+	</insert>
+	
+	<update id="afterAddActivityStorageDataModal" parameterType="hashMap">
+		update
+			tbl_activity_storage
+		set
+			sw = 'y'
+		where
+			uid = #{ uid }
+	</update>
+	
+	<delete id="removeActivityData" parameterType="hashMap">
+		delete from
+			tbl_activity
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<update id="afterRemoveActivityData" parameterType="hashMap">
+		update
+			tbl_activity_storage
+		set
+			sw = 'n'
+		where
+			uid = #{ uid }
+	</update>
+
+</mapper>

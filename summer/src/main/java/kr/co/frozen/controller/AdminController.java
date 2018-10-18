@@ -142,6 +142,17 @@ public class AdminController {
 		
 		return;
 	}
+	
+	@RequestMapping(value="/getIconList")
+	public void getIconList( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		PrintWriter				out			= response.getWriter();
+		JsonObject				json		= util.getIconList();
+		
+		out.print( json );
+		
+		return;
+	}
 
 	/******************** page move method **********************/
 	@RequestMapping(value="/login")

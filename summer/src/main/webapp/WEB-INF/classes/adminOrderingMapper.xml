@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="table_name == 'tbl_license'"> tbl_license </if>
 		<if test="table_name == 'tbl_timeline'"> tbl_timeline </if>
 		<if test="table_name == 'tbl_program'"> tbl_program </if>
+		<if test="table_name == 'tbl_program_img'"> tbl_program_img </if>
+		<if test="table_name == 'tbl_skill'"> tbl_skill </if>
+		<if test="table_name == 'tbl_activity'"> tbl_activity </if>
 	</sql>
 	
 	<update id="setDataOrdering" parameterType="hashMap">

@@ -45,29 +45,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 dt-right">
-					<span style="padding-right: 10px;"> <i class="fa fa-list tooltips page-icon" data-toggle="tooltip" data-placement="bottom" data-original-title="목록 보기" onclick="programModalCall()"></i> </span>
-				</div> -->
-				
-				<!-- 이전 목록 밑에 새로 등록 -->
-				<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<table id="program_table" class="table table-bordered table-hover dataTable dt-center" style="width: 100%;">
-						<thead>
-							<tr>
-								<th> 제목 </th>
-								<th> 언어 </th>
-								<th> 기술 </th>
-								<th> 시작일 </th>
-								<th> 종료일 </th>
-								<th> 이미지 </th>
-								<th> 순서 </th>
-								<th>  </th>
-							</tr>
-						</thead>
-					</table>
-				</div> -->
-			</div>
 			
 		</div>
 	</div>

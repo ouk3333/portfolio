@@ -51,13 +51,15 @@ var getSkillAbilityData = function() {
 			
 			for( var i = 0; i < data.data.length; i++ ) {
 				area += "<div class='col-3 dt-center' style='padding: 5px;'>" +
-				"<input type='text' value='" + data.data[i].ability + "' class='dial skill-ability' data-width='120' data-height='120' data-uid='" + data.data[i].uid + "'>" +
+				"<input type='text' value='" + data.data[i].ability + "' class='dial skill-ability' data-width='120' data-height='120' data-uid='" + data.data[i].uid + "' data-fgColor='" + data.data[i].background_color + "'>" +
 				"<div class='knob-label'><span class='tooltips page-icon' data-toggle='tooltip' data-placement='bottom' title='제거' onclick='removeSkillAbilityData(" + data.data[i].uid + ")'>" + data.data[i].name + "</span></div>" +
 				"</div>";
 			}
 			
 			area += "</div>";
 			$('#ability_area').append(area);
+			
+			getSkillColorData( data );
 		}
 	})
 	.done(function( data ) {
@@ -412,9 +414,8 @@ var addSkillStorageData = function( uid ) {
 	
 }
 
-var getSkillColorData = function() {
-	$('#color_area').append();
-	
+var getSkillColorData = function( data ) {
+
 	$('#color_area').empty();
 	
 	var area = "<div class='row'>";
@@ -422,27 +423,44 @@ var getSkillColorData = function() {
 	var G = 53;
 	var B = 94;
 	
-	for( var i = 0; i < 12; i++ ) {
+	var R_pm = 0;
+	var G_pm = 6;
+	var B_pm = 11;
+	
+	for( var i = 0; i < data.data.length; i++ ) {
+		var back_r = getConvertHEXtoRGB(data.data[i].background_color).r;
+		var back_g = getConvertHEXtoRGB(data.data[i].background_color).g;
+		var back_b = getConvertHEXtoRGB(data.data[i].background_color).b;
+		
+		var font_r = getConvertHEXtoRGB(data.data[i].font_color).r
+		var font_g = getConvertHEXtoRGB(data.data[i].font_color).g;
+		var font_b = getConvertHEXtoRGB(data.data[i].font_color).b;
+		
 		area += "<div class='col-7 dt-center' style='padding: 5px;'>" +
-					"<input type='text' class='form-control' style='background-color: rgb(" + R + ", " + G + ", " + B + ")'>" +
+					"<input type='text' class='form-control' value='" + data.data[i].background_color + "' style='background-color: rgb(" + back_r + ", " + back_g + ", " + back_b + "); color: rgb(" + font_r + ", " + font_g + ", " + font_b + ")'>" +
 				"</div>" + 
-				"<div class='callout callout-danger' style='margin-top: 6px; border-left-color: rgb(" + R + ", " + G + ", " + B + ")'>" + // border-left-color : background_color
-					"<h5> Skill Names </h5>" +
+				"<div class='callout callout-danger' style='margin-top: 6px; border-left-color: rgb(" + back_r + ", " + back_g + ", " + back_b + "); width: 120px;'>" +
+					"<h5> " + data.data[i].name + " </h5>" +
 				"</div>";
 		
-		if( G <= 249 ) {
-			G += 6;
+		if( G <= (255 - G_pm) ) {
+			G += G_pm;
 		}
-		if( B <= 244 ) {
-			B += 11;
+		if( B <= (255 - B_pm) ) {
+			B += B_pm;
 		}
 	}
 	
 	area += "</div>";
 	$('#color_area').append(area);
+
+}
+
+var setSkillColorData = function() {
+	
 }
 
 $(document).ready(function() {
 	getSkillAbilityData();
-	getSkillColorData();
+	//getSkillColorData();
 });

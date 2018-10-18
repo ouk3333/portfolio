@@ -48,9 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="addSkillStorageData" parameterType="hashMap">
 		insert into tbl_skill
-		(uid, name, ability, background_color, font_color, order_no)
+		(uid, name, ability, background_color, font_color)
 		values
-		(#{ uid }, #{ name }, #{ ability }, #{ background_color }, #{ font_color }, (select COALESCE(max(order_no) + 1, 1) from tbl_skill as temp))
+		(#{ uid }, #{ name }, #{ ability }, #{ background_color }, #{ font_color })
 	</insert>
 	
 	<update id="afterAddSkillStorageData" parameterType="hashMap">

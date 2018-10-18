@@ -54,7 +54,7 @@
 									<button type="button" class="btn btn-tool" data-type="color" onclick="skillToggleArea(this)">
 										<i class="fa fa-minus"></i>
 									</button>
-									<button type="button" class="btn btn-tool tooltips" data-toggle="tooltip" data-placement="bottom" title="저장" onclick="">
+									<button type="button" class="btn btn-tool tooltips" data-toggle="tooltip" data-placement="bottom" title="저장" onclick="setSkillColorData()">
 										<i class="fa fa-floppy-o"></i>
 									</button>
 								</div>

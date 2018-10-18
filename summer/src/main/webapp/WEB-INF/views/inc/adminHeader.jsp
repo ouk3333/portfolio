@@ -51,6 +51,12 @@
 	div.padding-md { padding-top: 10px; padding-bottom: 10px; }
 	div.padding-lg { padding-top: 15px; padding-bottom: 15px; }
 	
+	/* margin */
+	div.margin { margin-top: 15px; padding-bottom: 15px; };
+	div.margin-sm { margin-top: 5px; padding-bottom: 5px; };
+	div.margin-md { margin-top: 10px; padding-bottom: 10px; };
+	div.margin-lg { margin-top: 15px; padding-bottom: 15px; };
+	
 	/* tooltip */
 	div.tooltip { font-size: 12px !important; font-family: "Nanum Gothic" !important; }
 	
@@ -191,7 +197,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/activity?m=portfolio" class="nav-link experience">
+						<a href="${ pageContext.request.contextPath }/admin/activity?m=portfolio" class="nav-link activity">
 							<i class="fa fa-plus nav-icon text-info"></i>
 							<p>활동</p>
 						</a>

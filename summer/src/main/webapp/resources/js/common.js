@@ -75,7 +75,7 @@ var setPageName = function() {
 		} else if( second_path == 'skill' ) {
 			nav = "기술";
 			pageName = "기술 수정"
-		} else if( second_path == 'actibity' ) {
+		} else if( second_path == 'activity' ) {
 			nav = "활동";
 			pageName = "활동 수정";
 		} else if( second_path == 'contact' ) {
@@ -124,7 +124,7 @@ var setCurrentMenuActive = function() {
 		} else if( path == 'skill' ) {
 			$('.skill').addClass("active");
 		} else if( path == 'activity' ) {
-			$('.experience').addClass("active");
+			$('.activity').addClass("active");
 		} else if( path == 'contact' ) {
 			$('.contact').addClass("active");
 		}
@@ -249,6 +249,34 @@ var isEmpty = function( obj ) {
             return false;
     }
     return true;
+}
+
+var func_RGBtoHEX = function( value ) {
+	var a = value.toString(16);
+	
+	return a.length == 1 ? "0" + a : a;
+}
+
+var getConvertRGBtoHEX = function( r, g, b ) {
+	return "#" + func_RGBtoHEX(r) + func_RGBtoHEX(g) + func_RGBtoHEX(b);
+}
+
+var getConvertHEXtoRGB = function( hex ) {
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	
+	return result ? {
+		r: parseInt(result[1], 16),
+		g: parseInt(result[2], 16),
+		b: parseInt(result[3], 16)
+	} : null;
+}
+
+var buttonBlur = function( object ) {
+	
+	$(object).blur();
+	$('.tooltip').remove();
+	
+	return false;
 }
 
 $(document).ready(function(){
