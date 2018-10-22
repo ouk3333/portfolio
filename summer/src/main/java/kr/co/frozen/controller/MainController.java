@@ -1,6 +1,10 @@
 package kr.co.frozen.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,6 +82,44 @@ public class MainController {
 		out.print( json );
 		
 		return;
+	}
+	
+	@RequestMapping(value="/getPreviewImage")
+	public void getPreviewImage( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		BufferedOutputStream		out			= null;
+		InputStream					is			= null;
+		String						ext			= request.getParameter("ext");
+		String						fileName	= request.getParameter("f");
+		String						path		= dev_storage + "/" + fileName + ext;
+		
+		if( ext.equals(".jpg") ) {
+			ext = ".jpeg";
+		}
+		
+		try {
+			response.setContentType("image/" + ext);
+			response.setHeader("Content-Disposition", "inline;filename=" + fileName + ext);
+			
+			File file = new File(path);
+			
+			if(file.exists()){
+				is = new FileInputStream(file);
+				out = new BufferedOutputStream(response.getOutputStream());
+				int len;
+				byte[] buf = new byte[1024];
+				while ((len = is.read(buf)) > 0) {
+					out.write(buf, 0, len);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(out != null){ out.flush(); }
+			if(out != null){ out.close(); }
+			if(is != null){ is.close(); }
+		}
+		
 	}
 	
 	/******************** page move method **********************/

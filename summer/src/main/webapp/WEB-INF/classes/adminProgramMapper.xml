@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, date_format(a.start_date, '%Y-%m-%d') as start_date
 			, date_format(a.end_date, '%Y-%m-%d') as end_date
 			, a.order_no
-		    , (select count(fid) from tbl_program_img where uid = a.uid) as image_cnt
+		    , (select count(fid) from tbl_program_img where fid = a.uid) as image_cnt
 		from
 			tbl_program as a
 		order by

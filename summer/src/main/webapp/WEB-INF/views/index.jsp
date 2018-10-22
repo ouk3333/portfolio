@@ -2,10 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/inc/portfolioCSS.jsp" %>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="ko">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<link rel="favicon" href="<%= request.getContextPath() %>/resources/css/favicon.ico">
 </head>
 <body id="page-top">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top nav-image" id="sideNav">
@@ -46,9 +49,9 @@
 	</nav>
 
 	<div class="container-fluid p-0 section-color-setting">
-		<section class="resume-section p-lg-4 d-column" id="profile">
+		<section class="resume-section p-lg-5 d-column" id="profile">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-left">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center">
 					<h2>
 						<span class="title-color">Profile</span>
 					</h2>
@@ -65,26 +68,8 @@
 			
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<table class="license">
-						<tr>
-							<th colspan="2" class="content-center">보유 자격증</th>
-						</tr>
-						<tr>
-							<th>자격증</th>
-							<td>정보처리 산업기사</td>
-						</tr>
-						<tr>
-							<th>자격증</th>
-							<td>정보처리 기능사</td>
-						</tr>
-						<tr>
-							<th>자격증</th>
-							<td>컴퓨터활용능력 2급</td>
-						</tr>
-						<tr>
-							<th>면허증</th>
-							<td>1종 보통</td>
-						</tr>
+					<table class="license-table" id="license_table">
+						
 					</table>
 				</div>
 				
@@ -94,9 +79,9 @@
 			</div>
 		</section>
 		
-		<section class="resume-section p-lg-4 d-column" id="program">
+		<section class="resume-section p-lg-5 d-column" id="program">
 			<div class="row">
-				<div class="col-sm-12 content-left">
+				<div class="col-sm-12 content-center">
 					<h2>
 						<span class="title-color">Program</span>
 					</h2>
@@ -104,14 +89,17 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-sm-6">left</div>
-				<div class="col-sm-6">right</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="row" id="program_area">
+						
+					</div>
+				</div>
 			</div>
 		</section>
 
-		<section class="resume-section p-lg-4 d-column" id="skill">
+		<section class="resume-section p-lg-5 d-column" id="skill">
 			<div class="row">
-				<div class="col-sm-12 content-left">
+				<div class="col-sm-12 content-center">
 					<h2>
 						<span class="title-color">Skill</span>
 					</h2>
@@ -119,14 +107,15 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-sm-6">left</div>
-				<div class="col-sm-6">right</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="skill_area">
+					
+				</div>
 			</div>
 		</section>
 
-		<section class="resume-section p-lg-4 d-column" id="activity">
+		<section class="resume-section p-lg-5 d-column" id="activity">
 			<div class="row">
-				<div class="col-sm-12 content-left">
+				<div class="col-sm-12 content-center">
 					<h2>
 						<span class="title-color">Activity</span>
 					</h2>
@@ -134,14 +123,15 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-sm-6">left</div>
-				<div class="col-sm-6">right</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="activity_area">
+					
+				</div>
 			</div>
 		</section>
 
-		<section class="resume-section p-lg-4 d-column" id="contact">
+		<section class="resume-section p-lg-5 d-column" id="contact">
 			<div class="row">
-				<div class="col-sm-12 content-left">
+				<div class="col-sm-12 content-center">
 					<h2>
 						<span class="title-color">Contact</span>
 					</h2>
@@ -149,8 +139,9 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-sm-6">left</div>
-				<div class="col-sm-6">right</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contact_area">
+					
+				</div>
 			</div>
 		</section>
 
@@ -161,5 +152,25 @@
   </body>
 
 </html>
+
+<div class="modal fade in" id="program_sub_modal">
+	<div class="modal-dialog modal-dialog-centered" style='max-width: calc(100% - (4rem * 2)); width:1200px;'>
+		
+		<!-- modal contents -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span id="program_name">  </span>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+				<div class="slideshow-container" id="imageSlider">
+					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
 
 <%@ include file="/WEB-INF/views/inc/portfolioScript.jsp" %>

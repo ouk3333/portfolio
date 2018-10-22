@@ -20,19 +20,13 @@
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/resume.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/font.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/jquery.roadmap.css" rel="stylesheet"><!-- timeline -->
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/w3school-slider.css" rel="stylesheet"><!-- image slider -->
 
 <style>
 
 body { font-family: "Nanum Gothic" !important; color: var(--title-color-val) }
 
-/* .bg-primary { background-color: #00D8C8 !important; } */
 .bg-primary { background-color: var(--main-color-val) !important; }
-
-/* a.nav-link { color: #fff; opacity: 0.8; } */
-/* a.nav-link:hover { color: #F29661 !important; opacity: 1.0 !important; }
-a.active { color: #F29661 !important; opacity: 1.0 !important; } */
-
-/* a { color: #F29661 !important; opacity: 1.0 !important; } */
 
 /* main, title, point color 집합 */
 a.main-color { color: var(--main-color-val); opacity: 1.0; }
@@ -40,6 +34,8 @@ a.point-color { color: var(--point-color-val) !important; opacity: 1.0 !importan
 a.active { color: var(--point-color-val) !important; opacity: 1.0 !important; }
 a.point-color:hover { color: var(--point-color-val) !important; opacity: 1.0 !important; }
 .title-color { color: var(--title-color-val) !important; opacity: 1.0 !important; }
+
+.nav-item { padding: 5px !important; }
 
 .nav-image { background: url('/frozen/resources/css/img/portfolio-main-compress.jpg'); background-size: cover; }
 .section-color-setting { background-color: #FAFAFA !important; }
@@ -54,7 +50,7 @@ a.point-color:hover { color: var(--point-color-val) !important; opacity: 1.0 !im
 .roadmap.roadmap--orientation-horizontal { width: 100% !important; }
 
 /* license table */
-table.license {
+table.license-table {
 	border-collapse: collapse;
 	text-align: left;
 	line-height: 1.5;
@@ -63,7 +59,7 @@ table.license {
 	margin : 20px 10px;
 	width: 100%;
 }
-table.license th {
+table.license-table th {
 	width: 30%;
 	padding: 10px;
 	font-weight: bold;
@@ -73,7 +69,7 @@ table.license th {
 	border-bottom: 1px solid var(--title-color-val);
 
 }
-table.license td {
+table.license-table td {
 	width: 70%;
 	padding: 10px;
 	vertical-align: top;
@@ -82,13 +78,39 @@ table.license td {
 	border-bottom: 1px solid var(--title-color-val);
 }
 
-/* div.event {
-	width: 120px !important;
-	position: absolute !important;
-	margin: 0;
-	transform: translate(-50%, -50%) !important;
-	top: 50% !important;
-	left: 50%;
-} */
+.skill-bar { margin: 30px auto; height: 30px; }
+.sb_label { text-align: right !important; }
+
+.image {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    /* width: 200px; */
+}
+
+.image:hover {
+    box-shadow: 0 0 2px 1px currentColor;
+    cursor: pointer;
+}
+
+.cool-link {
+    display: inline-block;
+    color: var(--title-color-val);
+    text-decoration: none;
+}
+
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--title-color-val);
+    transition: width .3s;
+}
+
+.cool-link:hover::after {
+    width: 100%;
+    /* transition: width .3s; */
+}
 
 </style>

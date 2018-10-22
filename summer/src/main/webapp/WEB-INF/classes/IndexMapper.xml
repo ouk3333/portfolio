@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.IndexDAO">
+	
+	<select id="getProfileData_timeline" parameterType="hashMap" resultType="kr.co.frozen.model.IndexTimelineModel">
+		select
+			  event
+			, year
+			, month
+			, day
+			, remarks
+		from
+			tbl_timeline
+		order by
+			order_no asc
+	</select>
+	
+	<select id="getProfileData_license" parameterType="hashMap" resultType="kr.co.frozen.model.IndexLicenseModel">
+		select
+			  type
+			, name
+			, remarks
+		from
+			tbl_license
+		order by
+			order_no asc
+	</select>
+	
+	<select id="getProfileData_intro" parameterType="hashMap" resultType="kr.co.frozen.model.IndexIntroModel">
+		select
+			  intro
+			, marker
+			, preserve
+			, delay
+		from
+			tbl_intro
+		order by
+			uid desc
+		limit 1
+	</select>
+	
+	<select id="getProgramData" parameterType="hashMap" resultType="kr.co.frozen.model.IndexProgramModel">
+		select
+			  a.uid as uid
+			, a.title as title
+			, a.language as language
+		    , b.convert_name as convert_name
+		    , b.ext as ext
+		    , (select program_layout from tbl_setting order by uid desc limit 1) as program_layout
+		from
+			tbl_program as a
+		    left join tbl_program_img_storage as b on a.uid = b.fid
+		group by
+			a.uid
+		order by
+			a.order_no asc
+	</select>
+	
+	<select id="getProgramSubData" parameterType="hashMap" resultType="kr.co.frozen.model.IndexProgramModel">
+		select
+			  a.title as title
+			, a.language as language
+			, a.skill as skill
+		    , date_format(a.start_date, '%Y-%m-%d') as start_date
+			, date_format(a.end_date, '%Y-%m-%d') as end_date
+			, b.convert_name as convert_name
+			, b.ext as ext
+		    , b.remarks as remarks
+		from
+			tbl_program as a
+			left join tbl_program_img_storage as b on a.uid = b.fid
+		where
+			fid = #{ uid }
+		order by
+			a.order_no asc
+	</select>
+	
+	<select id="getSkillData" parameterType="hashMap" resultType="kr.co.frozen.model.IndexSkillModel">
+		select
+			  name
+			, ability
+			, background_color
+			, font_color
+		from
+			tbl_skill
+		order by
+			ability desc  
+	</select>
+	
+	<select id="getActivityData" parameterType="hashMap" resultType="kr.co.frozen.model.IndexActivityModel">
+		select
+			  icon
+			, year
+			, contents
+			, (select shape from tbl_icon where uid = a.icon) as shape
+		from
+			tbl_activity as a
+		order by
+			order_no asc
+	</select>
+	
+</mapper>
