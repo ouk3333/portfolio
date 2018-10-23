@@ -102,4 +102,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			order_no asc
 	</select>
 	
+	<select id="getContactData" parameterType="hashMap" resultType="kr.co.frozen.model.IndexContactModel">
+		select
+			  name
+			, value
+		from
+			tbl_contact
+		where
+			name not in ('phone')
+	</select>
+	
+	<insert id="setContactData" parameterType="hashMap">
+		insert into tbl_contact_list
+		(name, email, subject, remarks, reg_time)
+		values
+		(#{ name }, #{ email }, #{ subject }, #{ remarks }, #{ reg_time })
+	</insert>
+	
 </mapper>

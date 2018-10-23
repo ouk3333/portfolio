@@ -139,7 +139,130 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contact_area">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="">
+					
+					<div class="padding-lg"></div>
+					
+					<div class="row">
+						<div class="col-2 dt-right">
+							<span class="line-height"> <span class="text-red"> * </span> 성명 </span>
+						</div>
+						<div class="col-10">
+							<input type="text" data-id="name" class="form-control contact-input contact" placeholder="ex) 홍길동">
+						</div>
+					</div>
+					
+					<div class="padding-md"></div>
+						
+					<div class="row">
+						<div class="col-2 dt-right">
+							<span class="line-height"> <span class="text-red"> * </span> 이메일 </span>
+						</div>
+						<div class="col-10">
+							<input type="text" data-id="email" class="form-control contact-input contact-email contact" placeholder="ex) guest@naver.com">
+						</div>
+					</div>
+					
+					<div class="padding-md"></div>
+					
+					<div class="row">
+						<div class="col-2 dt-right">
+							<span class="line-height"> <span class="text-red"> * </span> 제목 </span>
+						</div>
+						<div class="col-10">
+							<input type="text" data-id="subject" class="form-control contact-input contact" placeholder="ex) subject">
+						</div>
+					</div>
+					
+					<div class="padding-md"></div>
+					
+					<div class="row">
+						<div class="col-2 dt-right">
+							<span class="line-height"> <span class="text-red"> * </span> 기타 사항 </span>
+						</div>
+						<div class="col-10">
+							<textarea rows="10" cols="30" data-id="remarks" class="form-control contact-input contact"></textarea>
+						</div>
+					</div>
+					
+					<div class="padding-md"></div>
+					
+					<div class="row">
+						<div class="col-2 dt-right">
+							<span class="line-height"> <span class="text-red"> * </span> <span class="contact-captcha" onclick="func_captcha()">  </span> </span>
+						</div>
+						<div class="col-10" style="display: flex;">
+							<input type="text" class="form-control contact-input contact-captcha-answer" style="width: 30%;">&nbsp;
+							<span class="line-height" style="color: red;"> ( * ) 항목은 필수 항목입니다. </span>
+						</div>
+					</div>
+					
+					<div class="padding-md"></div>
+					
+					<div class="row">
+						<div class="col-2">
+						
+						</div>
+						<div class="col-2">
+							<input type="button" value="Submit" class="btn btn-info" onclick="func_submit()">
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="contact_area">
+					
+					<div class="padding-lg"></div>
+					
+					<div class="row">
+						<div class="col-12 dt-center" id="profile_image_area">
+							<img src="<%= request.getContextPath() %>/resources/css/img/profile.jpg" class="rounded-circle profile-img" style="width: 30%;">
+						</div>
+					</div>
+					
+					<div class="padding-lg"></div>
+					<div class="padding-lg"></div>
+					
+					<div class="row">
+						<div class="col-12 dt-center" id="sns_area">
+							<ul class="list-inline list-social-icons mb-0">
+								<li class="list-inline-item">
+									<a href="" id="kakaotalk">
+										<span class="fa-stack fa-lg">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-comments fa-stack-1x fa-inverse sns-button"></i>
+										</span>
+									</a>
+								</li>
+								
+								<li class="list-inline-item">
+									<a href="" id="facebook">
+										<span class="fa-stack fa-lg">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-facebook-official fa-stack-1x fa-inverse sns-button"></i>
+										</span>
+									</a>
+								</li>
+								
+								<li class="list-inline-item">
+									<a href="" id="instagram">
+										<span class="fa-stack fa-lg">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-instagram fa-stack-1x fa-inverse sns-button"></i>
+										</span>
+									</a>
+								</li>
+								
+								<li class="list-inline-item">
+									<a href="" id="email">
+										<span class="fa-stack fa-lg">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-envelope fa-stack-1x fa-inverse sns-button"></i>
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 					
 				</div>
 			</div>
@@ -166,6 +289,15 @@
 			<div class="modal-body">
 				<div class="slideshow-container" id="imageSlider">
 					
+				</div>
+				
+				<div class="padding-lg"></div>
+				<div class="padding-lg"></div>
+				
+				<div class="row">
+					<div class="col-12 dt-center" id="program_skill">
+						
+					</div>
 				</div>
 			</div>
 		</div>

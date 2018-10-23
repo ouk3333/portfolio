@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import kr.co.frozen.model.IndexActivityModel;
+import kr.co.frozen.model.IndexContactModel;
 import kr.co.frozen.model.IndexIntroModel;
 import kr.co.frozen.model.IndexLicenseModel;
 import kr.co.frozen.model.IndexProgramModel;
@@ -22,5 +23,8 @@ public interface IndexDAO {
 	public ArrayList<IndexSkillModel>		getSkillData();
 	
 	public ArrayList<IndexActivityModel>	getActivityData();
+	
+	public ArrayList<IndexContactModel>		getContactData();
+	public void								setContactData( HashMap<String, Object> parameter );
 	
 }

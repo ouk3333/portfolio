@@ -21,6 +21,7 @@
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/font.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/jquery.roadmap.css" rel="stylesheet"><!-- timeline -->
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/w3school-slider.css" rel="stylesheet"><!-- image slider -->
+<link href="<%= request.getContextPath() %>/resources/css/sweetalert.css" rel="stylesheet"><!-- sweet alert -->
 
 <style>
 
@@ -112,5 +113,38 @@ table.license-table td {
     width: 100%;
     /* transition: width .3s; */
 }
+
+div.padding-sm { padding-top: 5px; padding-bottom: 5px; }
+div.padding-md { padding-top: 10px; padding-bottom: 10px; }
+div.padding-lg { padding-top: 15px; padding-bottom: 15px; }
+
+.dt-left { text-align: left; }
+.dt-center { text-align: center; }
+.dt-right { text-align: right; }
+
+.line-height { line-height: 35px; }
+
+.text-red { color: red; }
+
+.lead { font-size: 14px !important; }
+
+.profile-img { border: 5px solid #d2d2d2; }
+
+.sns-button:hover {
+	background-color: #FAFAFA;
+	color: var(--title-color-val);
+	cursor: pointer;
+	border: 1px solid var(--title-color-val);
+	border-radius: 50%;
+	
+	content: "";
+    display: block;
+    transition: color 0.3s, background-color 0.3s, border 0.3s
+}
+
+.list-social-icons a { color: var(--title-color-val); }
+.list-social-icons a:hover { color: var(--title-color-val); }
+
+textarea { resize: none; }
 
 </style>

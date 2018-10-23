@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 var g_nav_img = new Image();
 var g_nav_img_sw = false;
@@ -8,6 +5,8 @@ var g_nav_img_sw = false;
 var g_timeline_data;
 var g_license_data;
 var g_intro_data;
+
+var g_captcha_data = {};
 
 var g_title_color = window.getComputedStyle(document.documentElement).getPropertyValue('--title-color-val');
 var g_point_color = window.getComputedStyle(document.documentElement).getPropertyValue('--point-color-val');
@@ -160,6 +159,7 @@ var func_sub_program = function( uid ) {
 											"<img src='" + getContextPath() + "/getPreviewImage?f=" + data.program[i].convert_name + "&ext=" + data.program[i].ext + "' class='slideImages'>" +
 											"<div class='text'> " + data.program[i].remarks + " </div>" +
 										"</div>");
+				$('#program_skill').text("사용 기술 : " + data.program[i].skill);
 			}
 			
 			$('#imageSlider').append("<a class='prev' onclick='plusSlides(-1)'>&#10094;</a>");
@@ -248,8 +248,9 @@ var func_activity = function() {
 
 var func_contact = function() {
 	
-	//func_contact
-	/*$.ajax({
+	func_captcha();
+	
+	$.ajax({
 		url: getContextPath() + '/portfolio/getContactData',
 		type: 'POST',
 		dataType: 'JSON',
@@ -266,9 +267,115 @@ var func_contact = function() {
 				return false;
 			}
 			
+			for( var i = 0; i < data.contact.length; i++ ) {
+				$('#' + data.contact[i].name).attr("href", data.contact[i].value);
+				
+				if( data.contact[i].name != 'email' ) {
+					$('#' + data.contact[i].name).attr("target", "_blank");
+				}
+			}
 		}
-	});*/
+	});
+}
+
+var func_submit = function() {
 	
+	setPromise(() => {
+		
+	})
+	.then(() => {
+		$('.contact-input').each(function() {
+			
+			if( $(this).val() == '' ) {
+				$(this).focus();
+				throw show_alert("info", "누락된 항목을 확인해주세요.", 1000);
+			}
+			
+		});
+	})
+	.then(() => {
+		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		var email = $('.contact-email').val();
+		
+		if( email.match(regExp) == null ) {
+			$('.contact-email').focus();
+			throw show_alert("info", "이메일 형식이 일치하지 않습니다", 1000);
+		}
+	})
+	.then(() => {
+		var captcha = g_captcha_data[0] + g_captcha_data[1];
+		var answer = parseInt($('.contact-captcha-answer').val());
+		
+		if( captcha != answer ) {
+			$('.contact-captcha-answer').focus();
+			throw show_alert("info", "정답이 일치하지 않습니다", 1000);
+		}
+	})
+	.then(() => {
+		var contact_data = {};
+		
+		$('.contact').each(function() {
+			var key = $(this).attr("data-id");
+			var value = getEncode($(this).val());
+			
+			contact_data[key] = value;
+		});
+		
+		$.ajax({
+			url: getContextPath() + '/portfolio/setContactData',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				'contact_data': JSON.stringify(contact_data)
+			},
+			error: function( request, status, error ) {
+				alert("Server Error");
+				console.log( "request: " + request + " || status: " + status );
+			},
+			success: function( data ) {
+				
+				if( data.state != 'success' ) {
+					show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+					console.log( data.error );
+					return false;
+				}
+				
+				$('.contact-input').each(function() {
+					$(this).val("");
+				});
+				
+				show_alert("success", "전송이 완료되었습니다.", 1500);
+			}
+		});
+	})
+	.catch(function( reason ) {
+		console.log( reason );
+	});
+}
+
+// Promise
+function setPromise(callback) {
+	
+	return new Promise(function(resolve, reject) {
+		if( typeof callback === "function" ) {
+			setTimeout(() => {
+				resolve(callback);
+			}, 250)
+		} else {
+			reject("not a function");
+		}
+	});
+}
+
+var func_captcha = function() {
+	
+	for( var i = 0; i < 2; i++ ) {
+		var temp = Math.random();
+		temp = Math.ceil(temp * 100);
+		g_captcha_data[i] = temp;
+	}
+	
+	$('.contact-captcha').text( g_captcha_data[0] + " + " + g_captcha_data[1] + " = " );
 }
 
 $(document).on("scroll", onScroll);

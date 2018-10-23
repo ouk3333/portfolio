@@ -68,7 +68,24 @@ public class IndexController {
 		JsonObject			json	= index.getActivityData();
 		
 		out.print( json );
+	}
+	
+	@RequestMapping(value="/getContactData")
+	public void getContactData( HttpServletRequest request, HttpServletResponse response ) throws IOException {
 		
+		PrintWriter			out		= response.getWriter();
+		JsonObject			json	= index.getContactData();
+		
+		out.print( json );
+	}
+	
+	@RequestMapping(value="/setContactData")
+	public void setContactData( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		PrintWriter			out		= response.getWriter();
+		JsonObject			json	= index.setContactData(request);
+		
+		out.print( json );
 	}
 	
 }

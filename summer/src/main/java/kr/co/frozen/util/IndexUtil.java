@@ -12,12 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import kr.co.frozen.dao.IndexDAO;
 import kr.co.frozen.model.IndexActivityModel;
+import kr.co.frozen.model.IndexContactModel;
 import kr.co.frozen.model.IndexIntroModel;
 import kr.co.frozen.model.IndexLicenseModel;
 import kr.co.frozen.model.IndexProgramModel;
@@ -240,6 +243,65 @@ public class IndexUtil {
 		} catch (Exception e) {
 			json.addProperty( "state", "error" );
 			json.addProperty( "error", e.getMessage() );
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
+	
+	public JsonObject getContactData() {
+		
+		JsonObject						json		= new JsonObject();
+		JsonObject						result		= new JsonObject();
+		JsonArray						array		= new JsonArray();
+		IndexDAO						dao			= sqlsession.getMapper( IndexDAO.class );
+		ArrayList<IndexContactModel>	contact		= null;
+		
+		try {
+			
+			contact = dao.getContactData();
+			
+			for( IndexContactModel model: contact ) {
+				result = new JsonObject();
+				
+				result.addProperty( "name"	, model.getName() );
+				result.addProperty( "value"	, model.getValue() );
+				
+				array.add( result );
+			}
+			
+			json.add( "contact", array );
+			json.addProperty( "state", "success" );
+		} catch (Exception e) {
+			json.addProperty( "state", "error" );
+			json.addProperty( "error", e.getMessage() );
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
+	
+	@Transactional
+	public JsonObject setContactData( HttpServletRequest request ) throws UnsupportedEncodingException {
+		
+		JsonObject						json		= new JsonObject();
+		IndexDAO						dao			= sqlsession.getMapper( IndexDAO.class );
+		HashMap<String, Object>			parameter	= util.getRequestValues(request);
+		
+		logger.debug( parameter.toString() );
+		
+		try {
+
+			parameter.putAll( util.getJsonToHashMap(parameter.get("contact_data").toString()) );
+			parameter.put( "reg_time", util.getCurrentTime() );
+			
+			dao.setContactData(parameter);
+			
+			json.addProperty( "state", "success" );
+		} catch (Exception e) {
+			json.addProperty( "state", "error" );
+			json.addProperty( "error", e.getMessage() );
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 			e.printStackTrace();
 		}
 		
