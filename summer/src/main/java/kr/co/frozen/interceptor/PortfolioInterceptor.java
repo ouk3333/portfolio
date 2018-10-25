@@ -25,7 +25,7 @@ public class PortfolioInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		logger.debug( "portfolio intercepter" );
+		//logger.debug( "portfolio intercepter" );
 		
 		HttpSession session = request.getSession();
 		AdminDAO	dao		= sqlSession.getMapper( AdminDAO.class );

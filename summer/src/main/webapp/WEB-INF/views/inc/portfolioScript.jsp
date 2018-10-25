@@ -12,6 +12,8 @@
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/w3school-slider.js"></script><!-- image slider -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/resume.js"></script><!-- resume -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.blockUI.js"></script><!-- block UI -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script><!-- DataTable ORG -->
+<script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script><!-- DataTable BS -->
 
 <script src="<%= request.getContextPath() %>/resources/js/sweetalert.min.js"></script><!-- sweetalert -->
 <script src="<%= request.getContextPath() %>/resources/js/Osinfo.js"></script><!-- OS type -->

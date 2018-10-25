@@ -18,7 +18,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		logger.debug( "preHandle access" );
+		//logger.debug( "preHandle access" );
 		
 		//String server_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 		String compare_url = request.getRequestURL().toString();

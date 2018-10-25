@@ -23,7 +23,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-right">
-							<span class="line-height"> <i class="fa fa-comments"></i> 카카오</span>
+							<span class="line-height"> <i class="fa fa-comments"></i> 카카오 </span>
 						</div>
 						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							<input type="text" class="form-control" id="kakaotalk">
@@ -34,7 +34,7 @@
 					
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-right">
-							<span class="line-height"> <i class="fa fa-facebook-official"></i> 페이스북</span>
+							<span class="line-height"> <i class="fa fa-facebook-official"></i> 페이스북 </span>
 						</div>
 						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							<input type="text" class="form-control" id="facebook">
@@ -45,7 +45,7 @@
 					
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-right">
-							<span class="line-height"> <i class="fa fa-instagram"></i> 인스타그램</span>
+							<span class="line-height"> <i class="fa fa-instagram"></i> 인스타그램 </span>
 						</div>
 						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							<input type="text" class="form-control" id="instagram">
@@ -56,7 +56,7 @@
 					
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-right">
-							<span class="line-height"> <i class="fa fa-mobile"></i> 휴대폰 번호 - 캡차 포함</span>
+							<span class="line-height"> <i class="fa fa-mobile"></i> 휴대폰 번호 </span>
 						</div>
 						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							<input type="text" class="form-control" id="phone">
@@ -71,6 +71,17 @@
 						</div>
 						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							<input type="text" class="form-control" id="email">
+						</div>
+					</div>
+					
+					<div class="padding-sm"></div>
+					
+					<div class="row">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 dt-right">
+							<span class="line-height"> <i class="fa fa-github"></i> 깃허브 </span>
+						</div>
+						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control" id="github">
 						</div>
 					</div>
 					

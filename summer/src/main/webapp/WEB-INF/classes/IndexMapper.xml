@@ -119,4 +119,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{ name }, #{ email }, #{ subject }, #{ remarks }, #{ reg_time })
 	</insert>
 	
+	<select id="getOpenSourceData" parameterType="hashMap" resultType="kr.co.frozen.model.IndexOpenSourceModel">
+		select
+			  name
+			, type
+			, url
+		from
+			tbl_opensource
+	</select>
+	
 </mapper>

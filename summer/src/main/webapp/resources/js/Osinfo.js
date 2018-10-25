@@ -49,6 +49,7 @@ function OSInfoDev(){
 		else if(AgentUserOs.indexOf("WindowsNT6.2") != -1) OSName="Windows 8";
 		else if(AgentUserOs.indexOf("WindowsNT6.3") != -1) OSName="Windows 8.1";
 		else if(AgentUserOs.indexOf("WindowsNT6.4") != -1) OSName="Windows 10";
+		else if(AgentUserOs.indexOf("WindowsNT10.0") != -1) OSName="Windows 10";
 		else if(AgentUserOs.indexOf("WindowsPhone8.0") != -1) OSName="Windows Phone 8.0";
 		else if(AgentUserOs.indexOf("WindowsPhoneOS7.5") != -1) OSName="Windows Phone OS 7.5";
 		else if(AgentUserOs.indexOf("Xbox") != -1) OSName="Xbox 360";

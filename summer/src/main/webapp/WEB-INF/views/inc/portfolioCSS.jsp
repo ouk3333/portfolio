@@ -22,6 +22,7 @@
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/jquery.roadmap.css" rel="stylesheet"><!-- timeline -->
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/w3school-slider.css" rel="stylesheet"><!-- image slider -->
 <link href="<%= request.getContextPath() %>/resources/css/sweetalert.css" rel="stylesheet"><!-- sweet alert -->
+<link href="<%= request.getContextPath() %>/resources/css/dataTables.bootstrap4.css" rel="stylesheet"><!-- DataTable -->
 
 <style>
 

@@ -23,6 +23,7 @@ import kr.co.frozen.model.IndexActivityModel;
 import kr.co.frozen.model.IndexContactModel;
 import kr.co.frozen.model.IndexIntroModel;
 import kr.co.frozen.model.IndexLicenseModel;
+import kr.co.frozen.model.IndexOpenSourceModel;
 import kr.co.frozen.model.IndexProgramModel;
 import kr.co.frozen.model.IndexSkillModel;
 import kr.co.frozen.model.IndexTimelineModel;
@@ -302,6 +303,39 @@ public class IndexUtil {
 			json.addProperty( "state", "error" );
 			json.addProperty( "error", e.getMessage() );
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
+	
+	public JsonObject getOpenSourceData() {
+
+		JsonObject						json		= new JsonObject();
+		JsonObject						result		= new JsonObject();
+		JsonArray						array		= new JsonArray();
+		IndexDAO						dao			= sqlsession.getMapper( IndexDAO.class );
+		ArrayList<IndexOpenSourceModel>	opensource	= null;
+		
+		try {
+			
+			opensource = dao.getOpenSourceData();
+			
+			for( IndexOpenSourceModel model: opensource ) {
+				result = new JsonObject();
+				
+				result.addProperty( "name"	, model.getName() );
+				result.addProperty( "type"	, model.getType() );
+				result.addProperty( "url"	, model.getUrl() );
+				
+				array.add( result );
+			}
+			
+			json.add( "opensource", array );
+			json.addProperty( "state", "success" );
+		} catch (Exception e) {
+			json.addProperty( "state", "error" );
+			json.addProperty( "error", e.getMessage() );
 			e.printStackTrace();
 		}
 		

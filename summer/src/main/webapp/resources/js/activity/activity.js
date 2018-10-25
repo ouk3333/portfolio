@@ -409,7 +409,7 @@ var setActivityDataOrdering = function( object, order_no ) {
 var setAutoOrdering_activity = function() {
 	
 	$.ajax({
-		url: getContextPath() + '/admin/profile/setAutoOrderingActivity',
+		url: getContextPath() + '/admin/activity/setAutoOrderingActivity',
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},

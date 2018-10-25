@@ -279,7 +279,7 @@
 
     </div>
     <div style="height: 30px; color: #000; text-align: center;">
-    	Made by DONGWOOK, 2018 <a href="${ pageContext.request.contextPath }/admin/login"><i class="fa fa-cogs"></i></a> | <a>open-sources list</a>
+    	Made by DONGWOOK, 2018 <a href="${ pageContext.request.contextPath }/admin/login"><i class="fa fa-cogs"></i></a> | <a onclick="func_opensource_modal()" class="cool-link" style="cursor: pointer;">Open-Sources List</a>
     </div>
   </body>
 
@@ -306,6 +306,30 @@
 				<div class="row">
 					<div class="col-12 dt-center" id="program_skill">
 						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<div class="modal fade in" id="opensource_modal">
+	<div class="modal-dialog" style='max-width: calc(100% - (4rem * 2)); width: 800px;'>
+		
+		<!-- modal contents -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span> 오픈소스 리스트 </span>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-12">
+						<table id="opensource_table" class="table table-bordered table-hover dataTable dt-center" style="width: 100%;">
+							
+						</table>
 					</div>
 				</div>
 			</div>

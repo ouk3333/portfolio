@@ -7,6 +7,7 @@ import kr.co.frozen.model.IndexActivityModel;
 import kr.co.frozen.model.IndexContactModel;
 import kr.co.frozen.model.IndexIntroModel;
 import kr.co.frozen.model.IndexLicenseModel;
+import kr.co.frozen.model.IndexOpenSourceModel;
 import kr.co.frozen.model.IndexProgramModel;
 import kr.co.frozen.model.IndexSkillModel;
 import kr.co.frozen.model.IndexTimelineModel;
@@ -27,4 +28,5 @@ public interface IndexDAO {
 	public ArrayList<IndexContactModel>		getContactData();
 	public void								setContactData( HashMap<String, Object> parameter );
 	
+	public ArrayList<IndexOpenSourceModel>	getOpenSourceData();
 }

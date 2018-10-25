@@ -88,4 +88,13 @@ public class IndexController {
 		out.print( json );
 	}
 	
+	@RequestMapping(value="/getOpenSourceData")
+	public void getOpenSourceData( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+		
+		PrintWriter			out		= response.getWriter();
+		JsonObject			json	= index.getOpenSourceData();
+		
+		out.print( json );
+	}
+	
 }

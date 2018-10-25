@@ -228,5 +228,11 @@ public class AdminController {
 		
 		return "admin/contact";
 	}
+	
+	@RequestMapping(value="/openSource")
+	public String goOpenSource( HttpServletRequest request, HttpServletResponse response, Model model ) {
+		
+		return "admin/openSource";
+	}
 	/******************** page move method **********************/
 }

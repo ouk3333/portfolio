@@ -273,6 +273,10 @@ var func_contact = function() {
 				if( data.contact[i].name != 'email' ) {
 					$('#' + data.contact[i].name).attr("target", "_blank");
 				}
+				
+				if( data.contact[i].name == 'email' ) {
+					$('#' + data.contact[i].name).attr("href", "mailto:" + data.contact[i].value);
+				}
 			}
 		}
 	});
@@ -353,20 +357,6 @@ var func_submit = function() {
 	});
 }
 
-// Promise
-function setPromise(callback) {
-	
-	return new Promise(function(resolve, reject) {
-		if( typeof callback === "function" ) {
-			setTimeout(() => {
-				resolve(callback);
-			}, 250)
-		} else {
-			reject("not a function");
-		}
-	});
-}
-
 var func_captcha = function() {
 	
 	for( var i = 0; i < 2; i++ ) {
@@ -376,6 +366,78 @@ var func_captcha = function() {
 	}
 	
 	$('.contact-captcha').text( g_captcha_data[0] + " + " + g_captcha_data[1] + " = " );
+}
+
+var func_opensource_modal = function() {
+	$('#opensource_modal').modal({
+		show: true,
+		keyboard: false
+	});
+	
+	func_opensource();
+}
+
+var func_opensource = function() {
+	
+	$.ajax({
+		url: getContextPath() + '/portfolio/getOpenSourceData',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {},
+		error: function( request, status, error ) {
+			alert("Server Error");
+			console.log( "request: " + request + " || status: " + status );
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.error );
+				return false;
+			}
+			
+			$('#opensource_table').empty();
+			
+			$('#opensource_table').append(	"<thead>" +
+												"<tr>" +
+													"<td> 명칭 </td>" +
+													"<td> 종류 </td>" +
+													"<td>  </td>" +
+												"</tr>" +
+											"</thead>");
+			
+			$('#opensource_table').append("<tbody>");
+			for( var i = 0; i < data.opensource.length; i++ ) {
+				var name = "<td>" + data.opensource[i].name + "</td>";
+				var type = "<td>" + data.opensource[i].type + "</td>";
+				var button = "<td> <a href='" + data.opensource[i].url + "' target='_blank' class='btn btn-info'>바로가기</a> </td>";
+				
+				$('#opensource_table').append("<tr>" + name + type + button + "</tr>");
+			}
+			$('#opensource_table').append("</tbody>");
+		}
+	})
+	.done(function( data ) {
+		if( $.fn.DataTable.isDataTable('#opensource_table') ) {
+			$('#opensource_table').DataTable().destroy();
+		}
+		
+		$('#opensource_table').DataTable({
+			"info": false, // 검색 결과 수 기능
+			"searching": false, // 필터링 기능
+			"ordering": false, // 상위컬럼 정렬 기능
+			"lengthChange": false, // 페이지에 표시할 데이터 수 변경
+			"paging": false,
+			"language": oLanguageSetting,
+			"autoWidth": false,
+			"columnDefs": [
+				{ "width": "60%", "targets": 0, "className": "dt-center" },
+				{ "width": "20%", "targets": 1, "className": "dt-center" },
+				{ "width": "20%", "targets": 2, "className": "dt-center" }
+			]
+		});
+	});
+	
 }
 
 $(document).on("scroll", onScroll);

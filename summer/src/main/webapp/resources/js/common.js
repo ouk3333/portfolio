@@ -81,6 +81,9 @@ var setPageName = function() {
 		} else if( second_path == 'contact' ) {
 			nav = "연락처";
 			pageName = "연락처 수정"
+		} else if( second_path == 'openSource' ) {
+			nav = "오픈소스";
+			pageName = "오픈소스 관리";
 		}
 		
 		pageTitle += " | 관리자페이지";
@@ -127,6 +130,12 @@ var setCurrentMenuActive = function() {
 			$('.activity').addClass("active");
 		} else if( path == 'contact' ) {
 			$('.contact').addClass("active");
+		}
+		
+	} else if( menu == 'etc' ) {
+		
+		if( path == 'openSource' ) {
+			$('.openSource').addClass("active");
 		}
 		
 	}
@@ -277,6 +286,31 @@ var buttonBlur = function( object ) {
 	$('.tooltip').remove();
 	
 	return false;
+}
+
+//Promise
+/*
+setPromise(() => {
+		
+	})
+	.then(() => {
+		
+	})
+	.catch() {
+	
+	})
+ */
+function setPromise(callback) {
+	
+	return new Promise(function(resolve, reject) {
+		if( typeof callback === "function" ) {
+			setTimeout(() => {
+				resolve(callback);
+			}, 250)
+		} else {
+			reject("not a function");
+		}
+	});
 }
 
 $(document).ready(function(){

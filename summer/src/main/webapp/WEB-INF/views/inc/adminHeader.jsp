@@ -220,7 +220,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="#" class="nav-link" onclick="javascript:alert('대기')">
+				<a href="${ pageContext.request.contextPath }/admin/openSource?m=etc" class="nav-link openSource">
 					<i class="nav-icon fa fa-cogs" aria-hidden="true"></i>
 					<p> 오픈소스 관리 </p>
 				</a>
