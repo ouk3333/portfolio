@@ -136,6 +136,10 @@ var setCurrentMenuActive = function() {
 		
 		if( path == 'openSource' ) {
 			$('.openSource').addClass("active");
+		} else if( path == 'visitHistory' ) {
+			$('.visitor').addClass("active");
+		} else if( path == 'powerGeneration' ) {
+			$('.powerGeneration').addClass("active");	
 		}
 		
 	}
@@ -168,14 +172,6 @@ var delete_alert = function( func ) {
 		func();
 		
 	});
-}
-
-function pageLoad() {
-    history.pushState(null, null, location.href);
-    
-    window.onpopstate = function() {
-    	history.go(1);
-    };
 }
 
 function access_Visitor() {
@@ -317,5 +313,4 @@ $(document).ready(function(){
 	setPageName();
 	setCurrentMenuActive();
 	access_Visitor();
-	//pageLoad();
 });

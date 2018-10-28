@@ -13,7 +13,7 @@
 
 <!-- ------------------------------------------------------------ -->
 
-<!-- JAVASCRIPT -->
+<!-- SCRIPT -->
 <script src="<%= request.getContextPath() %>/resources/js/jquery.min.js"></script><!-- jquery -->
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.js"></script><!-- bootstrap -->
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
@@ -23,6 +23,8 @@
 <script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap-colorpicker.js"></script><!-- colorpicker -->
 <script src="<%= request.getContextPath() %>/resources/js/jquery.knob.js"></script><!-- knob - chart -->
+<script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.blockUI.js"></script><!-- block UI -->
+
 <script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
 
@@ -121,10 +123,16 @@
 				<a href="${ pageContext.request.contextPath }/admin/pageSetting?m=manage" class="nav-link top-menu"> 페이지 설정 </a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block">
-				<a href="${ pageContext.request.contextPath }/admin/visitHistory" class="nav-link top-menu"> 방문기록 </a>
+				<a href="#" class="nav-link top-menu"> 지원 목록 </a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block">
-				<a href="${ pageContext.request.contextPath }/admin/powerGeneration" class="nav-link top-menu"> 전력량 </a>
+				<a href="${ pageContext.request.contextPath }/admin/openSource?m=etc" class="nav-link top-menu"> 오픈소스 관리 </a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="${ pageContext.request.contextPath }/admin/visitHistory?m=etc" class="nav-link top-menu"> 방문기록 </a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="${ pageContext.request.contextPath }/admin/powerGeneration?m=etc" class="nav-link top-menu"> 전력량 </a>
 			</li>
 		</ul>
 	</nav>
@@ -223,6 +231,18 @@
 				<a href="${ pageContext.request.contextPath }/admin/openSource?m=etc" class="nav-link openSource">
 					<i class="nav-icon fa fa-cogs" aria-hidden="true"></i>
 					<p> 오픈소스 관리 </p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="${ pageContext.request.contextPath }/admin/visitHistory?m=etc" class="nav-link visitor">
+					<i class="nav-icon fa fa-user" aria-hidden="true"></i>
+					<p> 방문기록 </p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="${ pageContext.request.contextPath }/admin/powerGeneration?m=etc" class="nav-link powerGeneration">
+					<i class="nav-icon fa fa-bolt" aria-hidden="true"></i>
+					<p> 전력량 </p>
 				</a>
 			</li>
 		</ul>

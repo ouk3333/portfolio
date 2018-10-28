@@ -57,7 +57,7 @@ var getOpenSourceData = function() {
 			"searching": false, // 필터링 기능
 			"ordering": false, // 상위컬럼 정렬 기능
 			"lengthChange": false, // 페이지에 표시할 데이터 수 변경
-			"pageLength": 5, // 한 페이지에 표시할 데이터 수
+			"pageLength": 10, // 한 페이지에 표시할 데이터 수
 			"language": oLanguageSetting,
 			"autoWidth": false,
 			"columnDefs": [

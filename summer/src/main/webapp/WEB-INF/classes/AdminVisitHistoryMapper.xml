@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminVisitHistoryDAO">
+	
+	<select id="getIpStatsData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVisitHistoryModel">
+		select
+			  ip as name
+		    , count(ip) as cnt
+		from
+			tbl_visitor
+		group by
+			ip
+	</select>
+	
+	<select id="getOsStatsData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVisitHistoryModel">
+		select
+			  os as name
+		    , count(os) as cnt
+		from
+			tbl_visitor
+		group by
+			os
+	</select>
+	
+	<select id="getBrowserStatsData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVisitHistoryModel">
+		select
+			  browser as name
+		    , count(browser) as cnt
+		from
+			tbl_visitor
+		group by
+			browser
+	</select>
+	
+	<select id="getVisitorIpAddress" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVisitHistoryModel">
+		select
+			ip as name
+		from
+			tbl_visitor
+		group by
+			ip
+	</select>
+	
+</mapper>
