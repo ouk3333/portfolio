@@ -142,12 +142,13 @@ public class AdminVisitHistoryUtil {
 		
 		try {
 			
-			visitHistory = dao.getVisitorIpAddress();
+			visitHistory = dao.getIpStatsData();
 			
 			for( AdminVisitHistoryModel model: visitHistory ) {
 				result = new JsonObject();
 				
-				result.addProperty( "name", model.getName() );
+				result.addProperty( "name"	, model.getName() );
+				result.addProperty( "cnt"	, model.getCnt() );
 				
 				array.add( result );
 			}

@@ -28,6 +28,7 @@ import com.google.gson.JsonObject;
 
 import kr.co.frozen.dao.MainDAO;
 import kr.co.frozen.util.VisitorUtil;
+import kr.co.frozen.util.advancedUtil;
 
 @Controller
 public class MainController {
@@ -43,8 +44,25 @@ public class MainController {
 	@Value("#{storage[storage]}")
 	private String dev_storage;
 	
+	@Value("#{naverMail[host]}")
+	private String host;
+	
+	@Value("#{naverMail[port]}")
+	private int port;
+	
+	@Value("#{naverMail[SMTPuser]}")
+	private String SMTPuser;
+	
+	@Value("#{naverMail[user]}")
+	private String user;
+	
+	@Value("#{naverMail[password]}")
+	private String password;
+	
+	public advancedUtil util = new advancedUtil();
+	
 	@RequestMapping(value="/visitor")
-	public void getVisitorInfo( HttpServletRequest request, HttpServletResponse response ) throws IOException {
+	public void getVisitorInfo( HttpServletRequest request, HttpServletResponse response ) throws Exception {
 		
 		HashMap<String, Object> result 			= new HashMap<String, Object>();
 		HashMap<String, Object> parameter		= new HashMap<String, Object>();
@@ -74,13 +92,18 @@ public class MainController {
 		parameter.put( "time"	, client_time );
 		parameter.put( "os"		, client_os );
 		
-		// ClientInfo insert
 		dao.insertClientInfo( parameter );
 		
 		json.addProperty( "state", "success" );
 		
 		out.print( json );
 		
+		String fromName = "frozen_admin";
+		String subject = "visit new client";
+		String message = "visit new client - " + client_ip;
+		
+		util.sendEmail(host, port, SMTPuser, password, SMTPuser, fromName, subject, message, user);
+
 		return;
 	}
 	

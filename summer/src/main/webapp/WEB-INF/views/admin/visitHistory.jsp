@@ -50,7 +50,9 @@
 				</div>
 				
 				<div class="card-body" id="coordinates_area">
-					
+					<table id="visitor_table" class="table table-bordered table-hover dataTable dt-center" style="width: 100%;">
+						
+					</table>
 				</div>
 			</div>
 			

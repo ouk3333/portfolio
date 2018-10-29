@@ -35,11 +35,11 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
-		<!-- xml test -->
+		<!-- Mail Sender -->
 		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20180130</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.2</version>
 		</dependency>
 		
 		<!-- json -->

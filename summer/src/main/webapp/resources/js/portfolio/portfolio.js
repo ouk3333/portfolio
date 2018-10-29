@@ -320,7 +320,8 @@ var func_submit = function() {
 		
 		$('.contact').each(function() {
 			var key = $(this).attr("data-id");
-			var value = getEncode($(this).val());
+			var value = $(this).val();
+			value = value.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 			
 			contact_data[key] = value;
 		});

@@ -9,6 +9,5 @@ public interface AdminVisitHistoryDAO {
 	public ArrayList<AdminVisitHistoryModel>	getIpStatsData();
 	public ArrayList<AdminVisitHistoryModel>	getOsStatsData();
 	public ArrayList<AdminVisitHistoryModel>	getBrowserStatsData();
-	public ArrayList<AdminVisitHistoryModel>	getVisitorIpAddress();
 	
 }

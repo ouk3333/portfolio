@@ -35,13 +35,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			browser
 	</select>
 	
-	<select id="getVisitorIpAddress" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVisitHistoryModel">
-		select
-			ip as name
-		from
-			tbl_visitor
-		group by
-			ip
-	</select>
-	
 </mapper>

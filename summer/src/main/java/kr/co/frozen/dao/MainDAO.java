@@ -10,5 +10,6 @@ public interface MainDAO {
 	public ArrayList<MainModel>		getAdminLog( HashMap<String, Object> parameter );
 	
 	public void						insertClientInfo( HashMap<String, Object> parameter );
+	public int						selectClientInfo( HashMap<String, Object> parameter );
 	
 }

@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,6 +39,21 @@ public class IndexUtil {
 	
 	@Value("#{storage[storage]}")
 	private String dev_storage;
+	
+	@Value("#{naverMail[host]}")
+	private String host;
+	
+	@Value("#{naverMail[port]}")
+	private int port;
+	
+	@Value("#{naverMail[SMTPuser]}")
+	private String SMTPuser;
+
+	@Value("#{naverMail[user]}")
+	private String user;
+	
+	@Value("#{naverMail[password]}")
+	private String password;
 	
 	advancedUtil util = new advancedUtil();
 	
@@ -289,14 +305,19 @@ public class IndexUtil {
 		IndexDAO						dao			= sqlsession.getMapper( IndexDAO.class );
 		HashMap<String, Object>			parameter	= util.getRequestValues(request);
 		
-		logger.debug( parameter.toString() );
-		
 		try {
 
 			parameter.putAll( util.getJsonToHashMap(parameter.get("contact_data").toString()) );
 			parameter.put( "reg_time", util.getCurrentTime() );
 			
 			dao.setContactData(parameter);
+			
+			String email = parameter.get("email").toString();
+			String name = parameter.get("name").toString();
+			String subject = parameter.get("subject").toString();
+			String message = parameter.get("remarks").toString();
+			
+			util.sendEmail(host, port, SMTPuser, password, email, name, subject, message, user);
 			
 			json.addProperty( "state", "success" );
 		} catch (Exception e) {

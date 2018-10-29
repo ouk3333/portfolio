@@ -32,8 +32,13 @@ public class PortfolioInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		AdminDAO	dao		= sqlSession.getMapper( AdminDAO.class );
 		
+		if( session.getAttribute("portfolio") != null ) {
+			return true;
+		}
+		
 		ConfigModel	config	= dao.getConfiguration();
 		
+		session.setAttribute( "portfolio"		, "true" );
 		session.setAttribute( "main_color"		, config.getMain_color() );
 		session.setAttribute( "point_color"		, config.getPoint_color() );
 		session.setAttribute( "title_color"		, config.getTitle_color() );

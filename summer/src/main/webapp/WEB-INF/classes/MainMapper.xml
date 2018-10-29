@@ -16,4 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{ ip }, #{ browser }, #{ time }, #{ os })
 	</insert>
 	
+	<select id="selectClientInfo" parameterType="hashMap" resultType="int">
+		select
+			count(ip) as ip
+		from
+			tbl_visitor
+		where
+			ip = #{ ip };
+	</select>
+	
 </mapper>

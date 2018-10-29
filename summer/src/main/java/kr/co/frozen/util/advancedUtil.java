@@ -10,6 +10,9 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -71,6 +74,27 @@ public class advancedUtil {
 		fileName = UUID.randomUUID().toString();
 		
 		return fileName;
+	}
+	
+	public void sendEmail( String host, int port, String SMTPuser, String password, String fromEmail, String fromName, String subject, String message, String toEmail ) throws Exception {
+		
+		String charSet = "utf-8";
+		
+		HtmlEmail email = new HtmlEmail();
+		
+		email.setDebug(false);
+		email.setCharset(charSet);
+		email.setSSL(false);
+		email.setHostName(host);
+		email.setSmtpPort(port);
+		email.setAuthentication(SMTPuser, password);
+		email.setTLS(true);
+		email.addTo(toEmail, "Frozen Portfolio Admin");
+		email.setFrom(fromEmail, fromName, charSet);
+		email.setSubject("** [ Portfolio - Notice ] ** | " + subject);
+		email.setHtmlMsg(message);
+		email.send();
+		
 	}
 	
 }

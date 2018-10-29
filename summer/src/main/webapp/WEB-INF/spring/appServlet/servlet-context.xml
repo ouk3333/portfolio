@@ -40,8 +40,7 @@
 	
 	<util:properties id="mysql" location="/WEB-INF/MySQL.properties"></util:properties>
 	<util:properties id="storage" location="/WEB-INF/ServerConfig.properties"></util:properties>
-	
-	<!-- net.sf.log4jdbc.Log4jdbcProxyDataSource -->
+	<util:properties id="naverMail" location="/WEB-INF/NaverMailConfig.properties"></util:properties>
 	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="#{mysql['driver']}" />

@@ -115,8 +115,7 @@ var refresh_chart = function() {
 }
 
 var getVisitorIpAddress = function() {
-	$('#coordinates_area').empty();
-	
+
 	$.ajax({
 		url: getContextPath() + '/admin/visitHistory/getVisitorIpAddress',
 		type: 'POST',
@@ -134,17 +133,80 @@ var getVisitorIpAddress = function() {
 				return false;
 			}
 			
-			if( isEmpty(data.list) == false ) {
-				for( var i = 0; i < data.list.length; i++ ) {
-					$('#coordinates_area').append(	"<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3'>" +
-														"<div class='color-palette-set'>" +
-															"<div class='bg-info color-palette'><span>보류</span></div>" +
-														"</div>" +
-													"</div>");
-				}
+			$('#visitor_table').empty();
+			
+			$('#visitor_table').append(	"<thead>" +
+											"<tr>" +
+												"<th> # </th>" +
+												"<th> 아이피 </th>" +
+												"<th> 방문횟수 </th>" +
+												"<th> 위치(오차: 반경5km) </th>" +
+											"</tr>" +
+										"</thead>");
+			
+			$('#visitor_table').append("<tbody>");
+			for( var i = 0; i < data.list.length; i++ ) {
+				var number = "<td>" + (i + 1) + "</td>";
+				var ip = "<td>" + data.list[i].name + "</td>";
+				var cnt = "<td>" + data.list[i].cnt + "</td>";
+				var button = "<td> <input type='button' class='btn btn-success' value='바로가기' data-value='" + data.list[i].name + "' onclick='getLocationData(this)'> </td>";
+				
+				$('#visitor_table').append("<tr>" + number + ip + cnt + button + "</tr>");
 			}
+			$('#visitor_table').append("</tbody>");
+		}
+	})
+	.done(function( data ) {
+		if( $.fn.DataTable.isDataTable('#visitor_table') ) {
+			$('#visitor_table').DataTable().destroy();
+		}
+		
+		$('#visitor_table').DataTable({
+			"info": false, // 검색 결과 수 기능
+			"searching": false, // 필터링 기능
+			"ordering": false, // 상위컬럼 정렬 기능
+			"lengthChange": false, // 페이지에 표시할 데이터 수 변경
+			"pageLength": 5, // 한 페이지에 표시할 데이터 수
+			"language": oLanguageSetting,
+			"autoWidth": false,
+			"columnDefs": [
+				{ "width": "25%", "targets": 0, "className": "dt-center" },
+				{ "width": "25%", "targets": 1, "className": "dt-center" },
+				{ "width": "25%", "targets": 2, "className": "dt-center" },
+				{ "width": "25%", "targets": 3, "className": "dt-center" }
+			]
+		});
+	});
+}
+
+var getLocationData = function( object ) {
+	
+	var ip = $(object).attr("data-value");
+	
+	$.ajax({
+		url: 'http://ip-api.com/json/' + ip,
+		type: 'GET',
+		dataType: 'JSON',
+		data: {},
+		error: function( request, status, error ) {
+			alert("Server Error");
+			console.log( "request: " + request + " || status: " + status );
+		},
+		success: function( data ) {
+			
+			if( data.status != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+				console.log( data.message );
+				return false;
+			}
+			
+			var lat = data.lat;
+			var lon = data.lon;
+			
+			window.open("https://www.google.co.kr/maps/place/" + lat + "," + lon, "Location", "location=no, toolbar=no, menubar=no, status=no, channelmode=no");
 		}
 	});
+	
 }
 
 var skillToggleArea = function( object ) {
