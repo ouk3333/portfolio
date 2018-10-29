@@ -287,4 +287,25 @@ public class AdminSkillUtil {
 		return json;
 	}
 	
+	@Transactional
+	public JsonObject setSkillColorData( HttpServletRequest request ) throws UnsupportedEncodingException {
+		
+		JsonObject					json		= new JsonObject();
+		AdminSkillDAO				dao			= sqlSession.getMapper( AdminSkillDAO.class );
+		HashMap<String, Object>		parameter	= util.getRequestValues(request);
+		
+		try {
+			dao.setSkillColorData(parameter);
+			
+			json.addProperty( "state", "success" );
+		} catch (Exception e) {
+			json.addProperty( "state", "error" );
+			json.addProperty( "error", e.getMessage() );
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
+
 }

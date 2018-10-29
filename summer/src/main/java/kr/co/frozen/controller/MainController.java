@@ -99,8 +99,13 @@ public class MainController {
 		out.print( json );
 		
 		String fromName = "frozen_admin";
-		String subject = "visit new client";
-		String message = "visit new client - " + client_ip;
+		String subject = "visit unique client";
+		String message = "visit unique client - " + client_ip;
+		
+		if( dao.selectClientInfo(parameter) == 0 ) {
+			subject = "visit new client";
+			message = "visit new client - " + client_ip;
+		}
 		
 		util.sendEmail(host, port, SMTPuser, password, SMTPuser, fromName, subject, message, user);
 

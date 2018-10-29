@@ -100,4 +100,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			a.uid = #{ uid } and b.uid = #{ uid };
 	</update>
 	
+	<update id="setSkillColorData" parameterType="hashMap">
+		update
+			  tbl_skill as a
+			, tbl_skill_storage as b
+		set
+			  a.background_color = #{ background_color }
+			, b.background_color = #{ background_color }
+		where
+			a.uid = #{ uid } and b.uid = #{ uid }
+	</update>
+	
 </mapper>

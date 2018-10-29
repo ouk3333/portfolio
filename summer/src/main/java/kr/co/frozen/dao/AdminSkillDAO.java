@@ -18,4 +18,5 @@ public interface AdminSkillDAO {
 	public void								removeSkillAbilityData( HashMap<String, Object> parameter );
 	public void								afterRemoveSkillAbilityData( HashMap<String, Object> parameter );
 	public void								setSkillAbilityData( HashMap<String, Object> parameter );
+	public void								setSkillColorData( HashMap<String, Object> parameter );
 }

@@ -36,8 +36,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.getSkillAbilityData();
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/getSkillAbilityStorageData")
@@ -47,8 +45,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.getSkillAbilityStorageData();
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/insertSkillStorageData")
@@ -58,8 +54,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.insertSkillStorageData(request);
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/deleteSkillStorageData")
@@ -69,8 +63,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.deleteSkillStorageData(request);
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/addSkillStorageData")
@@ -80,8 +72,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.addSkillStorageData(request);
 		
 		out.print( json );
-		
-		return;
 	}
 
 	@RequestMapping(value="/getModifySkillStorageData")
@@ -91,8 +81,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.getModifySkillStorageData(request);
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/setModifySkillStorageData")
@@ -102,8 +90,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.setModifySkillStorageData(request);
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/removeSkillAbilityData")
@@ -113,8 +99,6 @@ public class AdminSkillController {
 		JsonObject			json	= skill.removeSkillAbilityData(request);
 		
 		out.print( json );
-		
-		return;
 	}
 	
 	@RequestMapping(value="/setSkillAbilityData")
@@ -124,8 +108,15 @@ public class AdminSkillController {
 		JsonObject			json	= skill.setSkillAbilityData(request);
 		
 		out.print( json );
+	}
+	
+	@RequestMapping(value="/setSkillColorData")
+	public void setSkillColorData( HttpServletRequest request, HttpServletResponse response ) throws IOException {
 		
-		return;
+		PrintWriter			out		= response.getWriter();
+		JsonObject			json	= skill.setSkillColorData(request);
+		
+		out.print( json );
 	}
 	
 }

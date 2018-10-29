@@ -437,7 +437,7 @@ var getSkillColorData = function( data ) {
 		var font_b = getConvertHEXtoRGB(data.data[i].font_color).b;
 		
 		area += "<div class='col-7 dt-center' style='padding: 5px;'>" +
-					"<input type='text' class='form-control' value='" + data.data[i].background_color + "' style='background-color: rgb(" + back_r + ", " + back_g + ", " + back_b + "); color: rgb(" + font_r + ", " + font_g + ", " + font_b + ")'>" +
+					"<input type='text' class='form-control' data-value='" + data.data[i].uid + "' data-type='color' maxlength='7' value='" + data.data[i].background_color + "' style='background-color: rgb(" + back_r + ", " + back_g + ", " + back_b + "); color: rgb(" + font_r + ", " + font_g + ", " + font_b + ")'>" +
 				"</div>" + 
 				"<div class='callout callout-danger' style='margin-top: 6px; border-left-color: rgb(" + back_r + ", " + back_g + ", " + back_b + "); width: 120px;'>" +
 					"<h5> " + data.data[i].name + " </h5>" +
@@ -458,9 +458,38 @@ var getSkillColorData = function( data ) {
 
 var setSkillColorData = function() {
 	
+	$('input[type=text][data-type=color]').each(function() {
+		var uid = $(this).attr("data-value");
+		var background_color = $(this).val();
+		
+		$.ajax({
+			url: getContextPath() + '/admin/skill/setSkillColorData',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				'uid': uid,
+				'background_color': background_color
+			},
+			error: function( request, status, error ) {
+				alert("Server Error");
+				console.log( "request: " + request + " || status : " + status );
+			},
+			success: function( data ) {
+				
+				if( data.state != 'success' ) {
+					show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+					console.log( data.error );
+					return false;
+				}
+				
+				show_alert("success", "저장 완료", 1000);
+				getSkillAbilityData();
+			}
+		});
+	});
+	
 }
 
 $(document).ready(function() {
 	getSkillAbilityData();
-	//getSkillColorData();
 });
