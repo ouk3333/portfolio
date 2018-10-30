@@ -62,28 +62,31 @@ var setPageName = function() {
 			pageName = "전력량 확인";
 		} else if( second_path == 'visitHistory' ) {
 			nav = "방문기록";
-			pageName = "방문기록 확인";
+			pageName = "방문기록 관리";
 		} else if( second_path == 'pageSetting' ) {
 			nav = "페이지 설정";
-			pageName = "페이지 기본 설정"
+			pageName = "페이지 설정 관리"
 		} else if( second_path == 'profile' ) {
 			nav = "프로필";
-			pageName = "프로필 수정";
+			pageName = "프로필 관리";
 		} else if( second_path == 'program' ) {
 			nav = "프로그램";
-			pageName = "프로그램 수정";
+			pageName = "프로그램 관리";
 		} else if( second_path == 'skill' ) {
 			nav = "기술";
-			pageName = "기술 수정"
+			pageName = "기술 관리"
 		} else if( second_path == 'activity' ) {
 			nav = "활동";
-			pageName = "활동 수정";
+			pageName = "활동 관리";
 		} else if( second_path == 'contact' ) {
 			nav = "연락처";
-			pageName = "연락처 수정"
+			pageName = "연락처 관리"
 		} else if( second_path == 'openSource' ) {
 			nav = "오픈소스";
 			pageName = "오픈소스 관리";
+		} else if( second_path == 'volunteer' ) {
+			nav = "지원목록";
+			pageName = "지원목록 관리";
 		}
 		
 		pageTitle += " | 관리자페이지";
@@ -140,6 +143,8 @@ var setCurrentMenuActive = function() {
 			$('.visitor').addClass("active");
 		} else if( path == 'powerGeneration' ) {
 			$('.powerGeneration').addClass("active");	
+		} else if( path == 'volunteer' ) {
+			$('.volunteer').addClass("active");
 		}
 		
 	}

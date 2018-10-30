@@ -234,5 +234,11 @@ public class AdminController {
 		
 		return "admin/openSource";
 	}
+	
+	@RequestMapping(value="/volunteer")
+	public String goVolunteer( HttpServletRequest request, HttpServletResponse response, Model model ) {
+		
+		return "admin/volunteer";
+	}
 	/******************** page move method **********************/
 }

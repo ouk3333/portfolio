@@ -114,8 +114,8 @@
 		<!-- Left navbar links -->
 		<ul class="navbar-nav">
 			<!-- <li class="nav-item">
-					<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-				</li> -->
+				<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+			</li> -->
 			<li class="nav-item d-none d-sm-inline-block">
 				<a href="${ pageContext.request.contextPath }/admin/adminMain" class="nav-link top-menu"> 메인 </a>
 			</li>
@@ -123,7 +123,7 @@
 				<a href="${ pageContext.request.contextPath }/admin/pageSetting?m=manage" class="nav-link top-menu"> 페이지 설정 </a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block">
-				<a href="#" class="nav-link top-menu"> 지원 목록 </a>
+				<a href="${ pageContext.request.contextPath }/admin/volunteer?m=etc" class="nav-link top-menu"> 지원 목록 </a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block">
 				<a href="${ pageContext.request.contextPath }/admin/openSource?m=etc" class="nav-link top-menu"> 오픈소스 관리 </a>
@@ -222,7 +222,7 @@
 			<li class="nav-header">MORE</li>
 			
 			<li class="nav-item">
-				<a href="#" class="nav-link" onclick="javascript:alert('대기')">
+				<a href="${ pageContext.request.contextPath }/admin/volunteer?m=etc" class="nav-link volunteer">
 					<i class="nav-icon fa fa-list" aria-hidden="true"></i>
 					<p> 지원 목록 </p>
 				</a>

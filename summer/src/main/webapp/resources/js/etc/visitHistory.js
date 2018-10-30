@@ -1,8 +1,3 @@
-/**
- * 
- */
-
-// 아이피에 따른 위경도 바로가기 시스템 구축
 
 var getBrowserStatsData = function() {
 	

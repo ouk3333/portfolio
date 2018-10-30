@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.frozen.dao.AdminVolunteerDAO">
+	
+	<select id="getVolunteerData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVolunteerModel">
+		select
+			  uid
+			, name
+			, location
+			, date_format(reg_date, '%Y-%m-%d') as reg_date
+		from
+			tbl_volunteer
+		order by
+			uid DESC
+	</select>
+	
+	<insert id="insertVolunteerData" parameterType="hashMap">
+		insert into tbl_volunteer
+		(name, location, reg_date)
+		values
+		(#{ name }, #{ location }, #{ reg_date })
+	</insert>
+	
+	<delete id="deleteVolunteerData" parameterType="hashMap">
+		delete from
+			tbl_volunteer
+		where
+			uid = #{ uid }
+	</delete>
+	
+	<select id="getVolunteerData_single" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVolunteerModel">
+		select
+			  uid
+			, name
+			, location
+			, date_format(reg_date, '%Y-%m-%d') as reg_date
+		from
+			tbl_volunteer
+		where
+			uid = #{ uid }
+	</select>
+	
+	<update id="updateVolunteerData" parameterType="hashMap">
+		update
+			tbl_volunteer
+		set
+			  name = #{ name }
+			, location = #{ location }
+			, reg_date = #{ reg_date }
+		where
+			uid = #{ uid }
+	</update>
+
+</mapper>
