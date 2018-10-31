@@ -53,7 +53,7 @@ var getVolunteerData = function() {
 		
 		$('#volunteer_table').DataTable({
 			"info": false, // 검색 결과 수 기능
-			"searching": false, // 필터링 기능
+			"searching": true, // 필터링 기능
 			"ordering": false, // 상위컬럼 정렬 기능
 			"lengthChange": false, // 페이지에 표시할 데이터 수 변경
 			"pageLength": 10, // 한 페이지에 표시할 데이터 수
@@ -65,7 +65,10 @@ var getVolunteerData = function() {
 				{ "width": "35%", "targets": 2, "className": "dt-center" },
 				{ "width": "20%", "targets": 3, "className": "dt-center" },
 				{ "width": "15%", "targets": 4, "className": "dt-center" }
-			]
+			],
+			"drawCallback": function( setting ) {
+				$('input[type=search][aria-controls=volunteer_table]').css('font-size', '14px');
+			}
 		});
 	});
 	

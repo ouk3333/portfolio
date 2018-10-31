@@ -347,11 +347,8 @@ public class AdminProgramUtil {
 					result = new JsonObject();
 					
 					result.addProperty( "uid"			, model.get(i).getUid() );
-					result.addProperty( "fid"			, model.get(i).getFid() );
-					result.addProperty( "org_name"		, model.get(i).getOrg_name() );
 					result.addProperty( "convert_name"	, model.get(i).getConvert_name() );
 					result.addProperty( "ext"			, model.get(i).getExt() );
-					result.addProperty( "path"			, model.get(i).getPath() );
 					result.addProperty( "remarks"		, model.get(i).getRemarks() );
 					
 					array.add( result );

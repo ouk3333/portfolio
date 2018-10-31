@@ -132,70 +132,79 @@
 
 <script>
 
-	$(document).ready(function() {
+var upload_button_func = function() {
+	
+	$('#upload_button').click(function() {
 		
-		$('#upload_button').click(function() {
+		var formData = new FormData();
+		
+		formData.append("uploadfile", $("#upload_file")[0].files[0]);
+		formData.append("uid", $('#uid').val());
+		
+		if( $("#upload_file")[0].files[0] == null || $("#upload_file")[0].files[0] == undefined ) {
 			
-			var formData = new FormData();
+			show_alert("info", "파일을 선택해주세요", 1000);
 			
-			formData.append("uploadfile", $("#upload_file")[0].files[0]);
-			formData.append("uid", $('#uid').val());
-			
-			if( $("#upload_file")[0].files[0] == null || $("#upload_file")[0].files[0] == undefined ) {
+			return false;
+		}
+		
+		$.ajax({
+			url: getContextPath() + '/admin/program/programImageFileUpload',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			success: function( data ) {
+				show_alert("success", "업로드 성공", 1000);
 				
-				show_alert("info", "파일을 선택해주세요", 1000);
-				
-				return false;
+				$("#upload_file").val(""); // 파일 업로드 후 꼭 초기화 해줄것
 			}
-			
-			$.ajax({
-				url: getContextPath() + '/admin/program/programImageFileUpload',
-				processData: false,
-				contentType: false,
-				data: formData,
-				type: 'POST',
-				success: function( data ) {
-					show_alert("success", "업로드 성공", 1000);
-					
-					$("#upload_file").val(""); // 파일 업로드 후 꼭 초기화 해줄것
-				}
-			})
-			
-		});
-		
-		getPreviewProgramImage( ${uid} );
+		})
 		
 	});
 	
-	var getPreviewProgramImage = function( uid ) {
-		
-		$.ajax({
-			url: getContextPath() + '/admin/program/getPreviewProgramImage',
-			type: 'POST',
-			dataType: 'JSON',
-			data: {
-				'uid': uid
-			},
-			error: function( error ) {
-				alert("Server Error");
-			},
-			success: function( data ) {
-				
-				if( data.state != 'success' ) {
-					show_alert("warning", "데이터 처리 중 문제가 발생했습니다", 1500);
-					console.log( data.error );
-					return false;
-				}
-				
-				for( var i = 0; i < data.data.length; i++ ) {
-					
-					$('#image_area').append("<li><img src='" + getContextPath() + "/admin/program/getPreview?uid=" + data.data[i].uid + "&f=" + data.data[i].convert_name + "&ext=" + data.data[i].ext + "&org_name=" + data.data[i].org_name + "'></li>");
-					
-				}
+}
+
+$(document).ready(function() {
+	
+	var uid = "${uid}";
+	
+	upload_button_func();
+	getPreviewProgramImage( uid );
+});
+
+var getPreviewProgramImage = function( uid ) {
+	
+	$.ajax({
+		url: getContextPath() + '/admin/program/getPreviewProgramImage',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			'uid': uid
+		},
+		error: function( error ) {
+			alert("Server Error");
+		},
+		success: function( data ) {
+			
+			if( data.state != 'success' ) {
+				show_alert("warning", "데이터 처리 중 문제가 발생했습니다", 1500);
+				console.log( data.error );
+				return false;
 			}
-		});
-		
-	}
+			
+			for( var i = 0; i < data.data.length; i++ ) {
+
+				$('#image_area').append("<li>" + 
+											"<img src='" + getContextPath() + "/admin/program/getPreview?f=" + data.data[i].convert_name + "&ext=" + data.data[i].ext + "' width='200px' height='200px'>" +
+											"<span class='users-list-name' style='font-size: 14px;'> " + data.data[i].order_no + " | 순서변경 준비중 </span>" +
+										"</li>");
+				
+			}
+		}
+	});
+	
+}
 	
 </script>
 

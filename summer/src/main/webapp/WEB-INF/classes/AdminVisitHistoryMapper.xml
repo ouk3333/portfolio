@@ -13,6 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			tbl_visitor
 		group by
 			ip
+		order by
+			max(time) desc
 	</select>
 	
 	<select id="getOsStatsData" parameterType="hashMap" resultType="kr.co.frozen.model.AdminVisitHistoryModel">

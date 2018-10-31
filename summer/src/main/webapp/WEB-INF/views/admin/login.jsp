@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/inc/header.jsp" %>
 <link href="<%= request.getContextPath() %>/resources/css/adminlte.min.css" rel="stylesheet">
+<script src="<%= request.getContextPath() %>/resources/js/sha-256.js"></script><!-- sha-256 -->
 
 <html>
 <head>
@@ -43,8 +44,12 @@
 
 <script>
 var admin_check = function( obj ) {
-	// ajax 준비
+	
 	var id = $(obj).val();
+	
+	if( id == '' ) {
+		return false;
+	}
 
 	$.ajax({
 		url: getContextPath() + '/admin/adminIdCheck',
@@ -82,7 +87,7 @@ var login_proc = function( id, password ) {
 		dataType: 'JSON',
 		data: {
 			'userID': encodeURIComponent(id),
-			'password': password
+			'password': SHA256(password)
 		},
 		cache: false,
 		success: function( data ) {

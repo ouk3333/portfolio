@@ -91,13 +91,6 @@ var setColorpickerConfig = function( data ) {
 			$(this).css("background-color", $(this).val());
 		});
 		
-		/*$(this).on('focus.colorpicker', function(ev){
-			var object = ev.target;
-			
-			$(this).colorpicker({color: $(object).val()});
-			$(this).colorpicker('setValue', $(object).val());
-		});*/
-		
 		$(this).on('changeColor', function(e){
 			var object = e.target;
 			
@@ -112,5 +105,4 @@ var getConfigHist = function() {
 
 $(document).ready(function() {
 	getConfiguration();
-	//setColorpickerConfig();
 });

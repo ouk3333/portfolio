@@ -78,7 +78,7 @@ public class AdminController {
 		String					userID		= URLDecoder.decode( request.getParameter("userID"), "UTF-8" );
 		String					password	= request.getParameter("password");
 		int						id_exist	= 0;
-		
+
 		id_exist = util.checkAdmin(userID, password, request);
 		
 		json.addProperty( "state", "success" );

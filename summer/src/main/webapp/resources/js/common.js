@@ -239,7 +239,8 @@ var oLanguageSetting = {
 	"zeroRecords": "데이터가 존재하지 않습니다.",
 	"info": " _PAGES_ 페이지 중 _PAGE_ 페이지",
 	"infoEmpty": "데이터가 존재하지 않습니다.",
-	"infoFiltered": "총 _MAX_ 개 데이터 중"
+	"infoFiltered": "총 _MAX_ 개 데이터 중",
+	"search": "검색 : _INPUT_"
 }
 
 var decreaseWord = function( value, index ) {
