@@ -9,8 +9,9 @@ var getProgramData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -148,8 +149,9 @@ var addProgramData = function() {
 		data: {
 			'addData': JSON.stringify(new_data)
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -202,8 +204,9 @@ var getProgramStorageData = function () {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -283,8 +286,9 @@ var deleteProgramStorageData = function( uid ) {
 			data: {
 				'uid': uid
 			},
-			error: function( error ) {
-				alert("Server Error");
+			error: function( request, status, error ) {
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				
@@ -323,8 +327,9 @@ var getModifyProgramStorageData = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -370,8 +375,9 @@ var modifyProgramStorageData = function( uid ) {
 			'uid': uid,
 			'modify': JSON.stringify(modify)
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -398,8 +404,9 @@ var insertProgramStoragedata = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -427,8 +434,9 @@ var removeProgramData = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -451,8 +459,9 @@ var setAutoOrderingProgram = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -482,8 +491,9 @@ var setProgramDataOrdering = function( object, order_no ) {
 			'type': type,
 			'order_no': order_no
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

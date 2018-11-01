@@ -245,6 +245,12 @@
 					<p> 전력량 </p>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link" style="cursor: pointer;">
+					<i class="nav-icon fa fa-plus-circle" aria-hidden="true"></i>
+					<p> SHA256 생성 </p>
+				</a>
+			</li>
 		</ul>
 	</nav>
 	<!-- /.sidebar-menu -->

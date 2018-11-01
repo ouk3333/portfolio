@@ -13,8 +13,8 @@ var getActivityData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -106,8 +106,8 @@ var removeActivityData = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 
@@ -133,8 +133,8 @@ var getIconList = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -183,8 +183,8 @@ var getActivityStorageData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -277,8 +277,8 @@ var insertActivityStorageData = function() {
 			'insert': JSON.stringify(insert)
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -309,8 +309,8 @@ var deleteActivityStorageData = function( uid ) {
 				'uid': uid
 			},
 			error: function( request, status, error ) {
-				alert("Server Error");
-				console.log( "request: " + request + " || status: " + status );
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				
@@ -354,8 +354,8 @@ var addActivityStorageDataModal = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -387,8 +387,8 @@ var setActivityDataOrdering = function( object, order_no ) {
 			'order_no': order_no
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

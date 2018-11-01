@@ -78,8 +78,9 @@ var setIntroData = function() {
 			'preserve': intro_preserve,
 			'delay': intro_delay
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -104,8 +105,9 @@ var getIntroData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function() {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

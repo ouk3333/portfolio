@@ -10,8 +10,8 @@ var getContactData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -47,8 +47,8 @@ var setContactData = function() {
 				'value': object.val()
 			},
 			error: function( request, status, error ) {
-				alert("Server Error");
-				console.log( "request: " + request + " || status: " + status );
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				

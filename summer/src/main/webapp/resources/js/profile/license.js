@@ -20,8 +20,9 @@ var getLicenseStorageData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function(error) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function(data) {
 			
@@ -116,8 +117,9 @@ var addLicenseData = function() {
 		data: {
 			'data': JSON.stringify(add_data)
 		},
-		error: function(error) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function(data) {
 			
@@ -145,8 +147,9 @@ var getLicenseData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function(error) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function(data) {
 			
@@ -257,8 +260,9 @@ var remove_license_data = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -334,8 +338,9 @@ var license_add_func = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -374,8 +379,9 @@ var getLicenseStorageModifyData = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -421,8 +427,9 @@ var setModifyLicenseData = function( uid ) {
 			'uid': uid,
 			'modify': JSON.stringify(object)
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -463,8 +470,9 @@ var license_delete_func = function( uid ) {
 			data: {
 				'uid': uid
 			},
-			error: function( error ) {
-				alert("Server Error");
+			error: function( request, status, error ) {
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				
@@ -496,8 +504,9 @@ var setLicenseDataOrdering = function( object, order_no ) {
 			'type': type,
 			'order_no': order_no
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

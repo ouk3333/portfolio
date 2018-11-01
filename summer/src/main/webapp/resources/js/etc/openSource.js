@@ -10,8 +10,8 @@ var getOpenSourceData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			console.log( "request: " + request + " || status: " + status );
-			alert("Server Error");
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -93,8 +93,8 @@ var deleteOpenSourceData = function( uid ) {
 				'uid': uid
 			},
 			error: function( request, status, error ) {
-				console.log( "request: " + request + " || status: " + status );
-				alert("Server Error");
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				
@@ -131,8 +131,8 @@ var getModifyOpenSourceData = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			console.log( "request: " + request + " || status: " + status );
-			alert("Server Error");
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -171,8 +171,8 @@ var modifyOpenSourceData = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			console.log( "request: " + request + " || status: " + status );
-			alert("Server Error");
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -217,8 +217,8 @@ var addOpenSourceData = function() {
 			'add_data': JSON.stringify(add_data)
 		},
 		error: function( request, status, error ) {
-			console.log( "request: " + request + " || status: " + status );
-			alert("Server Error");
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

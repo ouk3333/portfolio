@@ -28,8 +28,9 @@ var getSkillAbilityData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -79,8 +80,8 @@ var removeSkillAbilityData = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -120,8 +121,8 @@ var setSkillAbilityData = function() {
 			'value': value_array
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -155,8 +156,9 @@ var getSkillAbilityStorageData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -248,8 +250,9 @@ var insertSkillStorageData = function() {
 		data: {
 			'data': JSON.stringify(data)
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -279,8 +282,9 @@ var deleteSkillStorageData = function( uid ) {
 			data: {
 				'uid': uid
 			},
-			error: function( error ) {
-				alert("Server Error");
+			error: function( request, status, error ) {
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				
@@ -319,8 +323,8 @@ var getModifySkillStorageData = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -365,8 +369,8 @@ var setModifySkillStorageData = function( uid ) {
 			'modify': JSON.stringify(modify)
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -394,8 +398,8 @@ var addSkillStorageData = function( uid ) {
 			'uid': uid
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status : " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -471,8 +475,8 @@ var setSkillColorData = function() {
 				'background_color': background_color
 			},
 			error: function( request, status, error ) {
-				alert("Server Error");
-				console.log( "request: " + request + " || status : " + status );
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				

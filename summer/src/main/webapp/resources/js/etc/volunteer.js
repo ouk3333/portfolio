@@ -7,8 +7,8 @@ var getVolunteerData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status:" + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -105,8 +105,8 @@ var insertVolunteerData = function() {
 			'insert_data': JSON.stringify(insert_data)
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status:" + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -139,8 +139,8 @@ var deleteVolunteerData = function( uid ) {
 				'uid': uid
 			},
 			error: function( request, status, error ) {
-				alert("Server Error");
-				console.log( "request: " + request + " || status:" + status );
+				console.log( "request: " + request);
+				console.log( "status: " + status );
 			},
 			success: function( data ) {
 				
@@ -175,8 +175,8 @@ var getModifyVolunteerData = function( uid ) {
 			'uid': uid			
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status:" + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -216,8 +216,8 @@ var updateVolunteerData = function( uid ) {
 			'modify_data': JSON.stringify(modify_data)
 		},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status:" + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

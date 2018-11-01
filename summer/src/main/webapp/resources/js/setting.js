@@ -31,8 +31,9 @@ var getConfiguration = function() {
 			$('#title_color').css("background-color", data.title_color);
 			
 		},
-		error: function( data ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		}
 	})
 	.done(function( data ) {
@@ -73,8 +74,9 @@ var setConfiguration = function() {
 			show_alert("success", "저장 완료", 1500);
 			
 		},
-		error: function( data ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		}
 	});
 }

@@ -7,8 +7,8 @@ var getBrowserStatsData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 
@@ -38,8 +38,8 @@ var getOsStatsData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 
@@ -69,8 +69,8 @@ var getIpStatsData = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 
@@ -117,8 +117,8 @@ var getVisitorIpAddress = function() {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -184,8 +184,8 @@ var getLocationData = function( object ) {
 		dataType: 'JSON',
 		data: {},
 		error: function( request, status, error ) {
-			alert("Server Error");
-			console.log( "request: " + request + " || status: " + status );
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

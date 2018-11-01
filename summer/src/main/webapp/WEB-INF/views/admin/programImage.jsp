@@ -182,8 +182,9 @@ var getPreviewProgramImage = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

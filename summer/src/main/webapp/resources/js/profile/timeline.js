@@ -129,8 +129,9 @@ var addTimelineData = function() {
 			'remarks': getEncode(remarks),
 			'sw': getEncode(sw)
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -158,8 +159,9 @@ var getTimelineStorageData = function() {
 		type: 'POST',
 		dataType: 'JSON',
 		data: {},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -390,8 +392,9 @@ var remove_timeline_data = function( uid ) {
 		data: {
 			'uid': uid
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			
@@ -449,8 +452,9 @@ var setTimelineDataOrdering = function( object, order_no ) {
 			'type': type,
 			'order_no': order_no
 		},
-		error: function( error ) {
-			alert("Server Error");
+		error: function( request, status, error ) {
+			console.log( "request: " + request);
+			console.log( "status: " + status );
 		},
 		success: function( data ) {
 			

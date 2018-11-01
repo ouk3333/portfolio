@@ -43,3 +43,11 @@ var dashboard_click = function( event ) {
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 });
+
+$(document).ajaxError(function( event, request, setting ) {
+	if( request.status == 200 ) {
+		location.href = getContextPath() + '/admin/login';
+	} else if( request.status == 0 ) {
+		location.reload();
+	}	
+});
