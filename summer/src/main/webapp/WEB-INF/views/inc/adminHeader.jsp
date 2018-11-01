@@ -24,6 +24,7 @@
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap-colorpicker.js"></script><!-- colorpicker -->
 <script src="<%= request.getContextPath() %>/resources/js/jquery.knob.js"></script><!-- knob - chart -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.blockUI.js"></script><!-- block UI -->
+<script src="<%= request.getContextPath() %>/resources/js/sha-256.js"></script><!-- sha-256 -->
 
 <script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
@@ -246,7 +247,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="#" class="nav-link" style="cursor: pointer;">
+				<a href="javascript:open_sha_modal()" class="nav-link" style="cursor: pointer;">
 					<i class="nav-icon fa fa-plus-circle" aria-hidden="true"></i>
 					<p> SHA256 생성 </p>
 				</a>
