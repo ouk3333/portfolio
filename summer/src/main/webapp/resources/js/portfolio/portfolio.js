@@ -106,7 +106,7 @@ var func_program = function() {
 			var layout = 12;
 			
 			for( var i = 0; i < data.program.length; i++ ) {
-				$('#program_area').append("<div class='col-" + (layout / data.program[i].program_layout) + "' style='text-align: center; padding-top: 25px;'>" +
+				$('#program_area').append("<div class='col-lg-" + (layout / data.program[i].program_layout) + " col-md-" + (layout / data.program[i].program_layout) + " col-sm-12 col-xs-12' style='text-align: center; padding-top: 25px;'>" +
 										"<a>" +
 											"<img src='" + getContextPath() + "/getPreviewImage?f=" + data.program[i].convert_name + "&ext=" + data.program[i].ext + "' class='image' width='300' height='200' onclick='func_sub_modal(" + data.program[i].uid + ")'>" +
 										"</a>" +
@@ -232,7 +232,7 @@ var func_activity = function() {
 			
 			$('#activity_area').append("<div class='row' id='activity_inner'></div>");
 			for( var i = 0; i < data.activity.length; i++ ) {
-				$('#activity_inner').append("<div class='col-6' style='padding: 50px;'>" +
+				$('#activity_inner').append("<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' style='padding: 50px; display: flex;'>" +
 												"<span style='color: " + g_title_color + "'>" +
 													data.activity[i].shape + "&nbsp;&nbsp;" +
 												"</span>" +

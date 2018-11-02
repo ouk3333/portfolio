@@ -51,7 +51,7 @@
 	<div class="container-fluid p-0 section-color-setting">
 		<section class="resume-section p-lg-5 d-column" id="profile">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center">
+				<div class="col-sm-12 col-md-12 col-lg-12 content-center">
 					<h2>
 						<span class="title-color">Profile</span>
 					</h2>
@@ -59,7 +59,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-12 col-md-12 col-lg-12">
 					<div id="timeline">
 						
 					</div>
@@ -67,13 +67,13 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="col-sm-6 col-md-6 col-lg-6">
 					<table class="license-table" id="license_table">
 						
 					</table>
 				</div>
 				
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="typeout_box" style="margin-top: 15px;">
+				<div class="col-sm-6 col-md-6 col-lg-6" id="typeout_box" style="margin-top: 15px;">
 					
 				</div>
 			</div>
@@ -89,7 +89,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="row" id="program_area">
 						
 					</div>
@@ -107,7 +107,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="skill_area">
+				<div class="col-xl-12 col-sm-12 col-md-12 col-lg-12" id="skill_area">
 					
 				</div>
 			</div>
@@ -139,7 +139,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6" id="">
 					
 					<div class="padding-lg"></div>
 					
@@ -155,11 +155,11 @@
 					<div class="padding-md"></div>
 						
 					<div class="row">
-						<div class="col-2 dt-right">
+						<div class="col-2 dt-right" style="white-space: nowrap;">
 							<span class="line-height"> <span class="text-red"> * </span> 이메일 </span>
 						</div>
 						<div class="col-10">
-							<input type="text" data-id="email" class="form-control contact-input contact-email contact" placeholder="ex) guest@naver.com">
+							<input type="text" data-id="email" class="form-control contact-input contact-email contact col-xs-8" placeholder="ex) guest@naver.com">
 						</div>
 					</div>
 					
@@ -177,7 +177,7 @@
 					<div class="padding-md"></div>
 					
 					<div class="row">
-						<div class="col-2 dt-right">
+						<div class="col-2 dt-right" style="white-space: nowrap;">
 							<span class="line-height"> <span class="text-red"> * </span> 기타 사항 </span>
 						</div>
 						<div class="col-10">
@@ -188,10 +188,10 @@
 					<div class="padding-md"></div>
 					
 					<div class="row">
-						<div class="col-2 dt-right">
+						<div class="col-lg-2 col-md-4 col-sm-auto dt-right">
 							<span class="line-height"> <span class="text-red"> * </span> <span class="contact-captcha" onclick="func_captcha()">  </span> </span>
 						</div>
-						<div class="col-10" style="display: flex;">
+						<div class="col-lg-10 col-md-8 col-sm-auto" style="display: flex;">
 							<input type="text" class="form-control contact-input contact-captcha-answer" style="width: 30%;">&nbsp;
 							<span class="line-height" style="color: red;"> ( * ) 항목은 필수 항목입니다. </span>
 						</div>
@@ -209,7 +209,8 @@
 					</div>
 					
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="contact_area">
+				
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6" id="contact_area">
 					
 					<div class="padding-lg"></div>
 					
