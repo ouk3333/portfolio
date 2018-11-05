@@ -40,29 +40,6 @@ var dashboard_click = function( event ) {
 	
 }
 
-var open_sha_modal = function() {
-	$('#sha_modal').modal({
-		show: true,
-		keyboard: false
-	});
-	
-	$('#convert_str').val("");
-	$('#convert_result').val("");
-}
-
-var convertToSHA = function() {
-	var str = $('#convert_str').val();
-	
-	if( str == '' ) {
-		show_alert("info", "데이터 누락 항목을 확인해주세요", 1000);
-		return false;
-	}
-	
-	var result = SHA256(str);
-	
-	$('#convert_result').val( result );
-}
-
 $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 });

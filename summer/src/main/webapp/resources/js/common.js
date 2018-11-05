@@ -87,6 +87,9 @@ var setPageName = function() {
 		} else if( second_path == 'volunteer' ) {
 			nav = "지원목록";
 			pageName = "지원목록 관리";
+		} else if( second_path == 'utilCollection' ) {
+			nav = "유틸모음";
+			pageName = "유틸 모음";
 		}
 		
 		pageTitle += " | 관리자페이지";
@@ -117,6 +120,8 @@ var setCurrentMenuActive = function() {
 		
 		if( path == 'pageSetting' ) {
 			$('.pageSetting').addClass("active");
+		} else if( path == 'utilCollection' ) {
+			$('.utilCollection').addClass("active");
 		}
 		
 	} else if( menu == 'portfolio' ) {
@@ -169,6 +174,24 @@ var delete_alert = function( func ) {
 		showCancelButton: true,
 		confirmButtonClass: "btn-danger",
 		confirmButtonText: "삭제",
+		cancelButtonText: "취소",
+		closeOnConfirm: true
+	},
+	function() {
+		
+		func();
+		
+	});
+}
+
+var confirm_alert = function( func ) {
+	swal({
+		title: "진행 하시겠습니까?",
+		text: "해당 작업을 진행 할 예정입니다.",
+		type: "info",
+		showCancelButton: true,
+		confirmButtonClass: "btn-info",
+		confirmButtonText: "확인",
 		cancelButtonText: "취소",
 		closeOnConfirm: true
 	},
@@ -313,6 +336,19 @@ function setPromise(callback) {
 			reject("not a function");
 		}
 	});
+}
+
+var toggleDIV = function( object ) {
+
+	if( object == null || object == undefined || object == '' ) {
+		return false;
+	}
+	
+	var id = $(object).attr("data-toggle-value");
+	
+	$('#' + id).slideToggle();
+	
+	$(object).blur();
 }
 
 function detectBrowser() {

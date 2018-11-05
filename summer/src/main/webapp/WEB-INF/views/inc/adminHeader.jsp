@@ -164,96 +164,96 @@
 			</div>
 		</div>
 
-	<!-- Sidebar Menu -->
-	<nav class="mt-2">
-		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-			<li class="nav-item has-treeview manage"><!-- menu-open / active -->
-				<a href="#" class="nav-link">
-					<i class="nav-icon fa fa-dashboard text-primary"></i>
-					<p> 관리 <i class="right fa fa-angle-left text-warning"></i> </p>
-            	</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/pageSetting?m=manage" class="nav-link pageSetting">
-							<i class="fa fa-cog nav-icon" aria-hidden="true"></i> 
-							<p>페이지 기본 설정</p>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li class="nav-item has-treeview portfolio"><!-- add menu-open -->
-				<a href="#" class="nav-link">
-					<i class="nav-icon fa fa-pie-chart text-success"></i>
-					<p> 포트폴리오 <i class="right fa fa-angle-left text-warning"></i> </p>
-				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/profile?m=portfolio" class="nav-link profile"><!-- add active -->
-							<i class="fa fa-user nav-icon text-info"></i>
-							<p>프로필</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/program?m=portfolio" class="nav-link program">
-							<i class="fa fa-file nav-icon text-info"></i>
-							<p>프로그램</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/skill?m=portfolio" class="nav-link skill">
-							<i class="fa fa-android nav-icon text-info"></i>
-							<p>기술</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/activity?m=portfolio" class="nav-link activity">
-							<i class="fa fa-plus nav-icon text-info"></i>
-							<p>활동</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="${ pageContext.request.contextPath }/admin/contact?m=portfolio" class="nav-link contact">
-							<i class="fa fa-address-book nav-icon text-info"></i>
-							<p>연락처</p>
-						</a>
-					</li>
-				</ul>
-			</li>
-			
-			<li class="nav-header">MORE</li>
-			
-			<li class="nav-item">
-				<a href="${ pageContext.request.contextPath }/admin/volunteer?m=etc" class="nav-link volunteer">
-					<i class="nav-icon fa fa-list" aria-hidden="true"></i>
-					<p> 지원 목록 </p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="${ pageContext.request.contextPath }/admin/openSource?m=etc" class="nav-link openSource">
-					<i class="nav-icon fa fa-cogs" aria-hidden="true"></i>
-					<p> 오픈소스 관리 </p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="${ pageContext.request.contextPath }/admin/visitHistory?m=etc" class="nav-link visitor">
-					<i class="nav-icon fa fa-user" aria-hidden="true"></i>
-					<p> 방문기록 </p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="${ pageContext.request.contextPath }/admin/powerGeneration?m=etc" class="nav-link powerGeneration">
-					<i class="nav-icon fa fa-bolt" aria-hidden="true"></i>
-					<p> 전력량 </p>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="javascript:open_sha_modal()" class="nav-link" style="cursor: pointer;">
-					<i class="nav-icon fa fa-plus-circle" aria-hidden="true"></i>
-					<p> SHA256 생성 </p>
-				</a>
-			</li>
-		</ul>
-	</nav>
-	<!-- /.sidebar-menu -->
+		<!-- Sidebar Menu -->
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<li class="nav-item has-treeview manage"><!-- menu-open / active -->
+					<a href="#" class="nav-link">
+						<i class="nav-icon fa fa-dashboard text-primary"></i>
+						<p> 관리 <i class="right fa fa-angle-left text-warning"></i> </p>
+	            	</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/pageSetting?m=manage" class="nav-link pageSetting">
+								<i class="fa fa-cog nav-icon" aria-hidden="true"></i> 
+								<p> 페이지 기본 설정 </p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/utilCollection?m=manage" class="nav-link utilCollection">
+								<i class="fa fa-archive nav-icon" aria-hidden="true"></i> 
+								<p> 유틸 모음 </p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item has-treeview portfolio"><!-- add menu-open -->
+					<a href="#" class="nav-link">
+						<i class="nav-icon fa fa-pie-chart text-success"></i>
+						<p> 포트폴리오 <i class="right fa fa-angle-left text-warning"></i> </p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/profile?m=portfolio" class="nav-link profile"><!-- add active -->
+								<i class="fa fa-user nav-icon text-info"></i>
+								<p>프로필</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/program?m=portfolio" class="nav-link program">
+								<i class="fa fa-file nav-icon text-info"></i>
+								<p>프로그램</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/skill?m=portfolio" class="nav-link skill">
+								<i class="fa fa-android nav-icon text-info"></i>
+								<p>기술</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/activity?m=portfolio" class="nav-link activity">
+								<i class="fa fa-plus nav-icon text-info"></i>
+								<p>활동</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="${ pageContext.request.contextPath }/admin/contact?m=portfolio" class="nav-link contact">
+								<i class="fa fa-address-book nav-icon text-info"></i>
+								<p>연락처</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				
+				<li class="nav-header">MORE</li>
+				
+				<li class="nav-item">
+					<a href="${ pageContext.request.contextPath }/admin/volunteer?m=etc" class="nav-link volunteer">
+						<i class="nav-icon fa fa-list" aria-hidden="true"></i>
+						<p> 지원 목록 </p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="${ pageContext.request.contextPath }/admin/openSource?m=etc" class="nav-link openSource">
+						<i class="nav-icon fa fa-cogs" aria-hidden="true"></i>
+						<p> 오픈소스 관리 </p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="${ pageContext.request.contextPath }/admin/visitHistory?m=etc" class="nav-link visitor">
+						<i class="nav-icon fa fa-user" aria-hidden="true"></i>
+						<p> 방문기록 </p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="${ pageContext.request.contextPath }/admin/powerGeneration?m=etc" class="nav-link powerGeneration">
+						<i class="nav-icon fa fa-bolt" aria-hidden="true"></i>
+						<p> 전력량 </p>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- /.sidebar-menu -->
 	</div>
 </aside>

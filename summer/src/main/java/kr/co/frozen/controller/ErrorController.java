@@ -13,7 +13,7 @@ public class ErrorController {
 	@RequestMapping(value="/error404")
 	public String error400page( HttpServletRequest request, HttpServletResponse response ) {
 
-		response.setStatus( HttpServletResponse.SC_OK );
+		response.setStatus( HttpServletResponse.SC_NOT_FOUND );
 		
 		return "error/404";
 	}
@@ -21,7 +21,7 @@ public class ErrorController {
 	@RequestMapping(value="/error500")
 	public String error500page( HttpServletResponse response, HttpServletRequest request ) {
 
-		response.setStatus( HttpServletResponse.SC_OK );
+		response.setStatus( HttpServletResponse.SC_INTERNAL_SERVER_ERROR );
 		
 		return "error/500";
 	}

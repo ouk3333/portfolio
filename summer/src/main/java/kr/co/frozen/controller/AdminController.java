@@ -240,5 +240,11 @@ public class AdminController {
 		
 		return "admin/volunteer";
 	}
+	
+	@RequestMapping(value="/utilCollection")
+	public String goUtilCollection( HttpServletRequest request, HttpServletResponse response, Model model ) {
+		
+		return "admin/utilCollection";
+	}
 	/******************** page move method **********************/
 }
