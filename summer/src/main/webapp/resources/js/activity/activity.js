@@ -153,6 +153,8 @@ var getIconList = function() {
 	.done(function( data ) {
 		g_icon_option = option;
 		g_icon = data.data;
+		
+		getActivityData();
 	});
 }
 
@@ -434,5 +436,5 @@ var setAutoOrdering_activity = function() {
 
 $(document).ready(function() {
 	getIconList();
-	getActivityData();
+	//getActivityData();
 });
