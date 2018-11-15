@@ -10,13 +10,13 @@
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.typeout.js"></script><!-- typeout -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/simple-skillbar.js"></script><!-- skill bar -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/w3school-slider.js"></script><!-- image slider -->
-<script src="<%= request.getContextPath() %>/resources/js/portfolio/resume.js"></script><!-- resume -->
+<script src="<%= request.getContextPath() %>/resources/js/portfolio/resume.js?${timestamp}"></script><!-- resume -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.blockUI.js"></script><!-- block UI -->
 <script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script><!-- DataTable ORG -->
 <script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script><!-- DataTable BS -->
 
 <script src="<%= request.getContextPath() %>/resources/js/sweetalert.min.js"></script><!-- sweetalert -->
-<script src="<%= request.getContextPath() %>/resources/js/Osinfo.js"></script><!-- OS type -->
-<script src="<%= request.getContextPath() %>/resources/js/common.js"></script><!-- common -->
+<script src="<%= request.getContextPath() %>/resources/js/Osinfo.js?${timestamp}"></script><!-- OS type -->
+<script src="<%= request.getContextPath() %>/resources/js/common.js?${timestamp}"></script><!-- common -->
 
-<script src="<%= request.getContextPath() %>/resources/js/portfolio/portfolio.js"></script><!-- portfolio -->
+<script src="<%= request.getContextPath() %>/resources/js/portfolio/portfolio.js?${timestamp}"></script><!-- portfolio -->

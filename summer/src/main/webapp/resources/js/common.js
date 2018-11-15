@@ -329,9 +329,12 @@ function setPromise(callback) {
 	
 	return new Promise(function(resolve, reject) {
 		if( typeof callback === "function" ) {
-			setTimeout(() => {
+			/*setTimeout(() => {
 				resolve(callback);
-			}, 250)
+			}, 250)*/
+			setTimeout(function() {
+				resolve(callback);
+			}, 250);
 		} else {
 			reject("not a function");
 		}
@@ -352,34 +355,30 @@ var toggleDIV = function( object ) {
 }
 
 function detectBrowser() {
-	// Opera 8.0+
-	var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-
-	// Firefox 1.0+
-	var isFirefox = typeof InstallTrigger !== 'undefined';
-
-	// Safari 3.0+ "[object HTMLElementConstructor]" 
-	var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-
-	// Internet Explorer 6-11
-	var isIE = /*@cc_on!@*/false || !!document.documentMode;
-
-	// Edge 20+
-	var isEdge = !isIE && !!window.StyleMedia;
-
-	// Chrome 1+
-	var isChrome = !!window.chrome && !!window.chrome.webstore;
-
-	// Blink engine detection
-	var isBlink = (isChrome || isOpera) && !!window.CSS;
+	var browser = navigator.userAgent.toLowerCase();
 	
-//	console.log( isOpera );
-//	console.log( isFirefox );
-//	console.log( isSafari );
-//	console.log( isIE );
-//	console.log( isEdge );
-//	console.log( isChrome );
-//	console.log( isBlink );
+	if(browser.indexOf("msie") != -1){
+		var alert_msg = "<div class='alert alert-warning alert-dismissible'>" + 
+							"<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>" +
+							"<h5 style='font-family: 'Nanum Gothic';'><i class='icon fa fa-warning'></i> Alert!</h5>" +
+							"<span style='font-family: 'Nanum Gothic';'>Warning alert preview. This alert is dismissable.</span>" +
+						"</div>";
+	}
+}
+
+function detectMobile() {
+	var filter = "win16|win32|win64|mac";
+
+	if (navigator.platform ) {
+
+		 if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+			 // Mobile
+	
+		 } else {
+			 // PC
+		 }
+
+	}
 }
 
 $(document).ready(function(){

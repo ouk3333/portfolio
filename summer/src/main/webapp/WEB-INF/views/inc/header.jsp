@@ -11,7 +11,8 @@
 <script src="<%= request.getContextPath() %>/resources/js/jquery.min.js"></script><!-- jquery -->
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.js"></script><!-- bootstrap -->
 <script src="<%= request.getContextPath() %>/resources/js/sweetalert.min.js"></script><!-- bootstrap -->
-<script src="<%= request.getContextPath() %>/resources/js/Osinfo.js"></script><!-- OS type -->
-<script src="<%= request.getContextPath() %>/resources/js/common.js"></script><!-- bootstrap -->
+
+<script src="<%= request.getContextPath() %>/resources/js/Osinfo.js?${timestamp}"></script><!-- OS type -->
+<script src="<%= request.getContextPath() %>/resources/js/common.js?${timestamp}"></script><!-- bootstrap -->
 
 <!-- login header -->

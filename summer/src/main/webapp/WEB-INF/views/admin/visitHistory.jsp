@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="/WEB-INF/views/inc/adminHeader.jsp" %>
 <script src="<%= request.getContextPath() %>/resources/js/googleChart.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/etc/visitHistory.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/etc/visitHistory.js?${timestamp}"></script>
 
 <div class="content-wrapper">
 	

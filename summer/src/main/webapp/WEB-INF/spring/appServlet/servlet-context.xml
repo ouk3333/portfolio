@@ -24,6 +24,11 @@
 			<mapping path="/portfolio"/>
 			<beans:bean class="kr.co.frozen.interceptor.PortfolioInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/**" />
+			<beans:bean class="kr.co.frozen.interceptor.RootInterceptor" />
+		</interceptor>
+		
 	</interceptors>
 	
 	<!-- Enables the Spring MVC @Controller programming model -->

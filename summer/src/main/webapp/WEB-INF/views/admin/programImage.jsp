@@ -24,8 +24,8 @@
 <script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap-colorpicker.js"></script><!-- colorpicker -->
-<script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
+<script src="<%= request.getContextPath() %>/resources/js/common.js?${timestamp}"></script>
+<script src="<%= request.getContextPath() %>/resources/js/adminScript.js?${timestamp}"></script><!-- 어드민 전용 -->
 
 <head>
 <style>

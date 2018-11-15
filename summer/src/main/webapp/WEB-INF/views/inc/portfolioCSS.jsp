@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<style>
+<style type="text/css">
 
 /* custom properties */
 /* var point-color = window.getComputedStyle(document.documentElement).getPropertyValue('--point-color-val') */
@@ -18,15 +18,15 @@
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/bootstrap.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/font-awesome.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/resume.min.css" rel="stylesheet">
-<link href="<%= request.getContextPath() %>/resources/css/portfolio/font.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/portfolio/font.css?${timestamp}" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/jquery.roadmap.css" rel="stylesheet"><!-- timeline -->
 <link href="<%= request.getContextPath() %>/resources/css/portfolio/w3school-slider.css" rel="stylesheet"><!-- image slider -->
 <link href="<%= request.getContextPath() %>/resources/css/sweetalert.css" rel="stylesheet"><!-- sweet alert -->
 <link href="<%= request.getContextPath() %>/resources/css/dataTables.bootstrap4.css" rel="stylesheet"><!-- DataTable -->
 
-<style>
+<style type="text/css">
 
-body { font-family: "Nanum Gothic" !important; color: var(--title-color-val) }
+body { font-family: "Nanum Gothic" !important; color: var(--title-color-val); }
 
 .bg-primary { background-color: var(--main-color-val) !important; }
 

@@ -6,11 +6,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="ko">
 <head>
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="favicon" href="<%= request.getContextPath() %>/resources/css/favicon.ico">
 </head>
 <body id="page-top">
+	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top nav-image" id="sideNav">
 		<a class="navbar-brand js-scroll-trigger" href="#page-top">
 			<span class="d-block d-lg-none"> - </span>
@@ -43,6 +43,9 @@
 				</li>
 				<li class="nav-item" style="color: #fff; opacity: 0.8;">
 					<i class="fa fa-minus" aria-hidden="true"></i>
+				</li>
+				<li class="nav-item" style="color: #fff; opacity: 0.8; font-size: 11px;">
+					<span> * 현재 페이지는 크롬에 최적화 되어있습니다. </span>
 				</li>
 			</ul>
 		</div>

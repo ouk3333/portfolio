@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/inc/header.jsp" %>
 <link href="<%= request.getContextPath() %>/resources/css/adminlte.min.css" rel="stylesheet">
-<script src="<%= request.getContextPath() %>/resources/js/sha-256.js"></script><!-- sha-256 -->
+<script src="<%= request.getContextPath() %>/resources/js/sha-256.js?${timestamp}"></script><!-- sha-256 -->
 
 <html>
 <head>

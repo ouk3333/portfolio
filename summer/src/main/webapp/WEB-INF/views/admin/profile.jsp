@@ -2,10 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="/WEB-INF/views/inc/adminHeader.jsp" %>
 <script src="<%= request.getContextPath() %>/resources/js/ckeditor/ckeditor.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/profile/controller.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/profile/timeline.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/profile/license.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/profile/intro.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/profile/controller.js?${timestamp}"></script>
+<script src="<%= request.getContextPath() %>/resources/js/profile/timeline.js?${timestamp}"></script>
+<script src="<%= request.getContextPath() %>/resources/js/profile/license.js?${timestamp}"></script>
+<script src="<%= request.getContextPath() %>/resources/js/profile/intro.js?${timestamp}"></script>
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.typeout.js"></script>
 
 <div class="content-wrapper">

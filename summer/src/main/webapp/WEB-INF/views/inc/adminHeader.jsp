@@ -4,6 +4,7 @@
 <html>
 <!-- CSS -->
 <link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/jquery-ui.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/adminlte.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/resources/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -15,19 +16,20 @@
 
 <!-- SCRIPT -->
 <script src="<%= request.getContextPath() %>/resources/js/jquery.min.js"></script><!-- jquery -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery-ui.min.js"></script><!-- jquery UI -->
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.js"></script><!-- bootstrap -->
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
 <script src="<%= request.getContextPath() %>/resources/js/sweetalert.min.js"></script><!-- sweetalert -->
-<script src="<%= request.getContextPath() %>/resources/js/adminlte.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script>
+<script src="<%= request.getContextPath() %>/resources/js/adminlte.js"></script><!-- Admin LTE -->
+<script src="<%= request.getContextPath() %>/resources/js/jquery.dataTables.js"></script><!-- DataTables -->
+<script src="<%= request.getContextPath() %>/resources/js/dataTables.bootstrap4.js"></script><!-- DataTables BS -->
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap-colorpicker.js"></script><!-- colorpicker -->
 <script src="<%= request.getContextPath() %>/resources/js/jquery.knob.js"></script><!-- knob - chart -->
 <script src="<%= request.getContextPath() %>/resources/js/portfolio/jquery.blockUI.js"></script><!-- block UI -->
-<script src="<%= request.getContextPath() %>/resources/js/sha-256.js"></script><!-- sha-256 -->
+<script src="<%= request.getContextPath() %>/resources/js/sha-256.js?${timestamp}"></script><!-- sha-256 -->
 
-<script src="<%= request.getContextPath() %>/resources/js/common.js"></script>
-<script src="<%= request.getContextPath() %>/resources/js/adminScript.js"></script><!-- 어드민 전용 -->
+<script src="<%= request.getContextPath() %>/resources/js/common.js?${timestamp}"></script>
+<script src="<%= request.getContextPath() %>/resources/js/adminScript.js?${timestamp}"></script><!-- 어드민 전용 -->
 
 <head>
 <style>

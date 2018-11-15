@@ -284,7 +284,7 @@ var func_contact = function() {
 
 var func_submit = function() {
 	
-	setPromise(() => {
+	/*setPromise(() => {
 		
 	})
 	.then(() => {
@@ -316,6 +316,79 @@ var func_submit = function() {
 		}
 	})
 	.then(() => {
+		var contact_data = {};
+		
+		$('.contact').each(function() {
+			var key = $(this).attr("data-id");
+			var value = $(this).val();
+			value = value.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			
+			contact_data[key] = value;
+		});
+		
+		$.ajax({
+			url: getContextPath() + '/portfolio/setContactData',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {
+				'contact_data': JSON.stringify(contact_data)
+			},
+			error: function( request, status, error ) {
+				alert("Server Error");
+				console.log( "request: " + request + " || status: " + status );
+			},
+			success: function( data ) {
+				
+				if( data.state != 'success' ) {
+					show_alert("warning", "데이터 처리 중 문제가 발생했습니다.", 1500);
+					console.log( data.error );
+					return false;
+				}
+				
+				$('.contact-input').each(function() {
+					$(this).val("");
+				});
+				
+				show_alert("success", "전송이 완료되었습니다.", 1500);
+			}
+		});
+	})
+	.catch(function( reason ) {
+		console.log( reason );
+	});*/
+	
+	setPromise(function() {
+		
+	})
+	.then(function() {
+		$('.contact-input').each(function() {
+			
+			if( $(this).val() == '' ) {
+				$(this).focus();
+				throw show_alert("info", "누락된 항목을 확인해주세요.", 1000);
+			}
+			
+		});
+	})
+	.then(function() {
+		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		var email = $('.contact-email').val();
+		
+		if( email.match(regExp) == null ) {
+			$('.contact-email').focus();
+			throw show_alert("info", "이메일 형식이 일치하지 않습니다", 1000);
+		}
+	})
+	.then(function() {
+		var captcha = g_captcha_data[0] + g_captcha_data[1];
+		var answer = parseInt($('.contact-captcha-answer').val());
+		
+		if( captcha != answer ) {
+			$('.contact-captcha-answer').focus();
+			throw show_alert("info", "정답이 일치하지 않습니다", 1000);
+		}
+	})
+	.then(function() {
 		var contact_data = {};
 		
 		$('.contact').each(function() {
